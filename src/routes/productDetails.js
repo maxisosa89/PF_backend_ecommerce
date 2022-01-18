@@ -9,7 +9,7 @@ const router = require('express').Router();
 const { Product } = require('../db.js');
 
 
-
+//
 router.get('/:id', async (req, res) => {
     
     res.json({
