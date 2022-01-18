@@ -14,6 +14,8 @@ router.get('/:id', async (req, res) => {
     
     res.json({
         
+        id: 14,
+
         images: [
             {
                 img1: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-470x632.jpg"
@@ -52,6 +54,17 @@ router.get('/:id', async (req, res) => {
                 comment: "No te queda en negro?"
             }
         ],
+
+        Additional_Information: [
+            {
+
+                manufacturer: "Germany",
+                fit: "Skinny Fit",
+                lining_material: "Nylon",
+                Occasion: "Casual"
+            }
+        ],
+        
         description: "While the Baheera brand is well-known in the US thanks to it jeans denim items, recently it also rolled out a vast variety of jackets, coats, and other apparel."
     
     })
