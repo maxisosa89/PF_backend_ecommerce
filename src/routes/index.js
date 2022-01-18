@@ -8,7 +8,7 @@ const productDetails = require('./productDetails.js');
 
 /*          Configuracion de rutas:        */
 // USER:
-router.use('/user', usersRoute);
+router.use(usersRoute);
 
 
 // PRODUCT:
