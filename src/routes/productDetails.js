@@ -14,9 +14,9 @@ router.get('/:id', async (req, res) => {
     
     res.json({
         
-        id: 14,
+        id: 1,
 
-        images: [
+        img: [
             {
                 img1: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-470x632.jpg"
             },

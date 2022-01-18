@@ -9,35 +9,35 @@ router.get('/', async (req, res) => {
             name: "Baheera’s Winter Jacket",
             price: "45",
             img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-370x497.jpg",
-            category: "Calzado"
+            category: "Shoes"
         },
         {
             id: 2,
             name: "Grey’s Metal Belt",
             price: "56",
             img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/9_4-370x497.jpg",
-            category: "Calzado"
+            category: "Shoes"
         },
         {
             id: 3,
             name: "Knitted Gloves Turquoise",
             price: "124",
             img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/19_4-370x497.jpg",
-            category: "Calzado"
+            category: "Shoes"
         },
         {
             id: 4,
             name: "One-piece suit",
             price: "90",
             img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_4-370x497.jpg",
-            category: "Calzado"
+            category: "Shoes"
         },
         {
             id: 5,
             name: "YLD Solid Bandana Blue Camo",
             price: "123",
             img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/17_4-370x497.jpg",
-            category: "Calzado"
+            category: "Shoes"
         },
         {
             id: 6,
