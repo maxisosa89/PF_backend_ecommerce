@@ -5,6 +5,7 @@ const { Users } = require('../db.js');
 router.get('/users' , async (req, res) => {
 	// const {name} = req.query;
 
+
 	// const users = name? await Users.findAll({
 	// 	where: {name},
 	// 	through: {
@@ -33,5 +34,9 @@ router.get('/users' , async (req, res) => {
 		password: "user987"	
 	}])
 })
+
+
+
+
 
 module.exports = router;
