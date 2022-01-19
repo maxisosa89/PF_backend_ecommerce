@@ -11,7 +11,7 @@ const { Product } = require('../db.js');
 
 router.get('/', async (req, res) => {
     
-    res.json([
+    res.json(
         {
         
             id: 1,
@@ -36,6 +36,33 @@ router.get('/', async (req, res) => {
             type: "Shoes",
 
             price: "$45.00",
+
+            talles: [
+              {
+                id: 1,
+                xs: 0,
+              },
+              {
+                id:2,
+                s: 0
+              },
+              {
+                id:3,
+                m: 0
+              },
+              {
+                id:4,
+                l: 0
+              },
+              {
+                id:5,
+                xl: 0
+              },
+              {
+                id:6,
+                xxl: 0
+              },
+            ],
         
             reviews: [
                 {
@@ -67,7 +94,7 @@ router.get('/', async (req, res) => {
             description: "While the Baheera brand is well-known in the US thanks to it jeans denim items, recently it also rolled out a vast variety of jackets, coats, and other apparel."
     
         }
-    ]) 
+    ) 
 });
 
 
