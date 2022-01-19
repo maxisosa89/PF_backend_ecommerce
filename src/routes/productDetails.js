@@ -9,14 +9,13 @@ const router = require('express').Router();
 const { Product } = require('../db.js');
 
 
-//
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
     
     res.json({
         
         id: 1,
 
-        img: [
+        images: [
             {
                 img1: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-470x632.jpg"
             },
@@ -31,9 +30,9 @@ router.get('/:id', async (req, res) => {
             }    
         ],
 
-        nameProduc: "Baheera’s Winter Jacket",
+        name: "Baheera’s Winter Jacket",
         
-        productType: "Shoes",
+        type: "Shoes",
 
         price: "$45.00",
         
@@ -55,13 +54,13 @@ router.get('/:id', async (req, res) => {
             }
         ],
 
-        Additional_Information: [
+        additional_information: [
             {
 
                 manufacturer: "Germany",
                 fit: "Skinny Fit",
                 lining_material: "Nylon",
-                Occasion: "Casual"
+                occasion: "Casual"
             }
         ],
         
