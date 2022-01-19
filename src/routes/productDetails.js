@@ -37,30 +37,36 @@ router.get('/', async (req, res) => {
 
             price: "$45.00",
 
-            talles: [
+            size: [
               {
                 id: 1,
-                xs: 0,
+                name: "XS",
+                qty: 0,
               },
               {
                 id:2,
-                s: 0
+                name: "S",
+                qty: 0
               },
               {
                 id:3,
-                m: 0
+                name: "M",
+                qty: 0
               },
               {
                 id:4,
-                l: 0
+                name: "L",
+                qty: 0
               },
               {
                 id:5,
-                xl: 0
+                name: "XL",
+                qty: 0
               },
               {
                 id:6,
-                xxl: 0
+                name: "XXL",
+                qty: 0
               },
             ],
         
