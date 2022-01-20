@@ -3,10 +3,11 @@ const { Users } = require("../db");
 
 router.post("/", async (req, res) => {
   const { name, picture, email } = req.body;
-  let accountCreated = await Users.create({
-    name,
-    picture,
-    email,
+  let accountCreated = await Users.findOrCreate({
+    where: {email},
+    defaults: {
+      name, email, picture
+    }
   });
   res.sendStatus(200);
 });
