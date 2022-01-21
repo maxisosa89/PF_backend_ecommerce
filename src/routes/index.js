@@ -3,6 +3,7 @@ const router = require('express').Router();
 const usersRoute = require('./users.js'); 
 const productDetails = require('./productDetails.js');
 const allProducts = require('./allProducts')
+const allCategories = require('./categories')
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -15,6 +16,9 @@ router.use(usersRoute);
 // PRODUCT:
 router.use('/products', productDetails);
 router.use('/products', allProducts);
+
+//CATEGORIES: 
+router.use('/', allCategories)
 
 
 module.exports = router;
