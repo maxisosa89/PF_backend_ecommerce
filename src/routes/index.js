@@ -1,4 +1,10 @@
-const router = require("express").Router();
+const router = require('express').Router();
+// Importe de todas las rutas:
+const usersRoute = require('./users.js'); 
+const productDetails = require('./productDetails.js');
+const allProducts = require('./allProducts')
+const allCategories = require('./categories')
+
 
 // Importe de todas las rutas:
 const usersRoute = require("./users.js");
@@ -18,7 +24,11 @@ router.use("/productsDetails/id", productDetails);
 router.use("/postAccount", postAccount);
 router.use("/ordersAdmin", ordersAdmin);
 
+//CATEGORIES: 
+router.use('/', allCategories)
+
 //CATEGORIES:
 router.use(categoriesRoute);
+
 
 module.exports = router;
