@@ -1,5 +1,6 @@
-const router = require('express').Router();
-const { Product } = require('../db.js');
+const router = require("express").Router();
+const { Product } = require("../db.js");
+
 
 router.get('/', async (req, res) => {
     
@@ -1145,7 +1146,7 @@ router.get('/', async (req, res) => {
             description: "While the Baheera brand is well-known in the US thanks to it jeans denim items, recently it also rolled out a vast variety of jackets, coats, and other apparel."
         },
     ])
-});
 
+});
 
 module.exports = router;
