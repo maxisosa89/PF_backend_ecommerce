@@ -1,12 +1,7 @@
 const router = require('express').Router();
+
 // Importe de todas las rutas:
-const usersRoute = require('./users.js'); 
-const productDetails = require('./productDetails.js');
-const allProducts = require('./allProducts')
 const allCategories = require('./categories')
-
-
-// Importe de todas las rutas:
 const usersRoute = require("./users.js");
 const productDetails = require("./productDetails.js");
 const allProducts = require("./allProducts");
