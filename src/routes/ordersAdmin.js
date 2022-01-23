@@ -1,25 +1,48 @@
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-  res.json({
-    image:
-      "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-470x632.jpg",
-    productName: "Graffitti Dress",
-    price: "$600",
-    client: [
-      {
-        name: "Pepito Perez",
-        Email: "pepitoperez@gmail.com",
-        country: "Le Colombi",
-        city: "Bogotá",
+  res.json([
+    {
+      products: [
+        {
+          id: 1,
+          name: "juan",
+          talle: "XL",
+          cantidad: 1,
+          price: 3000,
+        },
+        {
+          id: 2,
+          name: "Juana",
+          talle: "Xs",
+          cantidad: 2,
+          price: 9000,
+        },
+        {
+          id: 3,
+          name: "Luis",
+          talle: "M",
+          cantidad: 3,
+          price: 12000,
+        },
+        {
+          id: 4,
+          name: "Camila",
+          talle: "M",
+          cantidad: 2,
+          price: 6000,
+        },
+      ],
+      client: {
+        name: "juan",
+        Email: "juan@gmail.com",
+        country: "Argentina",
+        city: "Chascomús",
         street: "calle 100 no 100",
         timestamps: "15 de enero 2021",
       },
-    ],
-    status: ["Pending", "cancelled", "delivered"],
-    description: "3 Graffitti Dress a 200 each one",
-    showDetails: "",
-  });
+    },
+  ]);
 });
 
 module.exports = router;
