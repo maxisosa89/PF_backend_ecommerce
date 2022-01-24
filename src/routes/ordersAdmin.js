@@ -6,33 +6,12 @@ router.get("/", async (req, res) => {
       products: [
         {
           id: 1,
-          name: "juan",
+          name: "Baheera’s Winter Jacket",
           talle: "XL",
           cantidad: 1,
           price: 3000,
         },
-        {
-          id: 2,
-          name: "Juana",
-          talle: "Xs",
-          cantidad: 2,
-          price: 9000,
-        },
-        {
-          id: 3,
-          name: "Luis",
-          talle: "M",
-          cantidad: 3,
-          price: 12000,
-        },
-        {
-          id: 4,
-          name: "Camila",
-          talle: "M",
-          cantidad: 2,
-          price: 6000,
-        },
-      ],
+       ],
       client: {
         name: "juan",
         Email: "juan@gmail.com",
