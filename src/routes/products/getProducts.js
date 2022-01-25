@@ -46,9 +46,9 @@ while (qty > 0) {
 
 const getProducts = async (req, res) => {
   try {
-    await Product.bulkCreate(arr);
     const allProducts = await Product.findAll();
-    res.json(allProducts);
+    !allProducts.length && (await Product.bulkCreate(arr));
+    res.json(await Product.findAll());
   } catch (error) {
     res.json(console.log);
   }
