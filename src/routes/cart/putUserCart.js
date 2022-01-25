@@ -1,11 +1,11 @@
-const {Cart, User, Product} = require("../../db")
+const {Cart, Users, Product} = require("../../db")
 
 
 const putUserCart = async (req,res,next)=>{
   try{
     const {UserId} = req.params;
     const { productsInfo} = req.body;
-    
+
     //[ Me dejo un arreglo con los ids de los productos que componen el nuevo carrito
     let idProduct = productsInfo.map(el=>el.idProduct)
 

@@ -1,4 +1,4 @@
-const {Cart, User} = require("../../../../db");
+const {Cart, Users} = require("../../db");
 
 
 const getUserCart = async (req,res,next)=>{
