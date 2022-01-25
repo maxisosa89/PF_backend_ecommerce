@@ -44,8 +44,8 @@ Product.belongsToMany(Order, { through: Details, foreignKey:"ProductId" }); //or
 Order.belongsToMany(Product,{ through: Details , foreignKey:"OrderId"}); //products
 
 //Un usuario puede tener varias ordenes, pero cada orden pertenece a un único usuario
-Order.belongsTo(User, {as:"user", foreignKey:{name: 'UserId'} }); //user
-User.hasMany(Order, {as:"orders",foreignKey:{name:'UserId'}  }); //orders
+Order.belongsTo(Users, {as:"user", foreignKey:{name: 'UserId'} }); //user
+Users.hasMany(Order, {as:"orders",foreignKey:{name:'UserId'}  }); //orders
 
 
 
