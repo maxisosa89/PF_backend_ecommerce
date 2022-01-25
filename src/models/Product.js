@@ -15,13 +15,11 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    category: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
-    },
-    name: {
+    description: {
       type: DataTypes.STRING,
-      allowNull: false,
+    },
+    aditionalInformation: {
+      type: DataTypes.STRING,
     },
   });
 };
