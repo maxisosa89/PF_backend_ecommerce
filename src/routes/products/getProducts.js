@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Product } = require("../../db.js");
+const { Product, Categories } = require("../../db.js");
 
 var images = [
   "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/19_4-370x497.jpg",
@@ -54,9 +54,30 @@ while (qty > 0) {
 
 const getProducts = async (req, res) => {
   try {
+    const allCategories = await Categories.findAll();
     const allProducts = await Product.findAll();
     !allProducts.length && (await Product.bulkCreate(arr));
-    res.json(await Product.findAll());
+    const relatedProducts = await Product.findAll();
+
+    relatedProducts.map(async (el) => {
+      const findedCategory = await Categories.findOne({
+        where: {
+          name: allCategories[
+            Math.round((allCategories.length - 1) * Math.random())
+          ].name,
+        },
+      });
+
+      const findedProduct = await Product.findOne({
+        where: {
+          name: el,
+        },
+      });
+
+      findedProduct.addCategories(findedCategory);
+    });
+
+    res.json(relatedProducts);
   } catch (error) {
     res.json(console.log);
   }
