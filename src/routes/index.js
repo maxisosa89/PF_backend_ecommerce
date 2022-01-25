@@ -7,6 +7,9 @@ const { getUserOrders } = require('./Orders/getUserOrders.js');
 const { postUserOrder } = require('./Orders/postUserOrder');
 const { getAllOrders } = require('./Orders/getAllOrders.js');
 const { putOrder } = require('./Orders/putOrder.js');
+const {putUserCart} = require('./Cart/putUserCart')
+const {getUserCart} = require('./Cart/getUserCart')
+const {deleteUserCart} = require('./Cart/deleteUserCart')
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -14,6 +17,11 @@ const { putOrder } = require('./Orders/putOrder.js');
 /*          Configuracion de rutas:        */
 // USER:
 router.use(usersRoute);
+
+// CART:
+router.put('/cart/:UserId', putUserCart);
+router.get('/cart/:UserId', getUserCart);
+router.delete('/cart/:UserId', deleteUserCart);
 
 
 // PRODUCT:
