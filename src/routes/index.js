@@ -3,6 +3,9 @@ const router = require('express').Router();
 const usersRoute = require('./users.js'); 
 const productDetails = require('./productDetails.js');
 const allProducts = require('./allProducts')
+const {putUserCart} = require('./Cart/putUserCart')
+const {getUserCart} = require('./Cart/getUserCart')
+const {deleteUserCart} = require('./Cart/deleteUserCart')
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -10,6 +13,11 @@ const allProducts = require('./allProducts')
 /*          Configuracion de rutas:        */
 // USER:
 router.use(usersRoute);
+
+// CART:
+router.put('/cart/:UserId', putUserCart);
+router.get('/cart/:UserId', getUserCart);
+router.delete('/cart/:UserId', deleteUserCart);
 
 
 // PRODUCT:
