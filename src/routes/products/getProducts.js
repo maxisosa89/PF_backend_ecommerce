@@ -70,14 +70,26 @@ const getProducts = async (req, res) => {
 
       const findedProduct = await Product.findOne({
         where: {
-          name: el,
+          name: el.name,
         },
       });
 
       findedProduct.addCategories(findedCategory);
     });
 
-    res.json(relatedProducts);
+    const productsAndCategory = await Product.findAll({
+      include: [
+        {
+          model: Categories,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
+
+    res.json(productsAndCategory);
   } catch (error) {
     res.json(console.log);
   }
