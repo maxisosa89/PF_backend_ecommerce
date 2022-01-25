@@ -21,5 +21,15 @@ module.exports = (sequelize) => {
     aditionalInformation: {
       type: DataTypes.STRING,
     },
+    stock: {
+      type: DataTypes.JSON({
+        xs: DataTypes.INTEGER,
+        s: DataTypes.INTEGER,
+        m: DataTypes.INTEGER,
+        l: DataTypes.INTEGER,
+        xl: DataTypes.INTEGER,
+        xxl: DataTypes.INTEGER,
+      }),
+    },
   });
 };

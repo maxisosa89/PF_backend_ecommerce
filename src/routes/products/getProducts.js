@@ -41,6 +41,14 @@ while (qty > 0) {
       "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
     aditionalInformation:
       "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
+    stock: {
+      xs: Math.round(Math.random() * 10),
+      s: Math.round(Math.random() * 10),
+      m: Math.round(Math.random() * 10),
+      l: Math.round(Math.random() * 10),
+      xl: Math.round(Math.random() * 10),
+      xxl: Math.round(Math.random() * 10),
+    },
   });
 }
 
