@@ -38,29 +38,26 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Users, Product, Cart, Order, Details} = sequelize.models;
-
+const { Users, Product, Cart, Order, Details, Categories } = sequelize.models;
 
 // Aca vendrian las relaciones
 
 //Cada usuario puede guardar en su carrito muchos productos, y estos productos pueden ser los mismos para distintos usuarios
 //Cart es una relacion entre usuarios y productos
-Product.belongsToMany(Users, { through: Cart , foreignKey:"ProductId"}); //users
-Users.belongsToMany(Product,{ through: Cart , foreignKey:"UserId"});  //products
-
+Product.belongsToMany(Users, { through: Cart, foreignKey: "ProductId" }); //users
+Users.belongsToMany(Product, { through: Cart, foreignKey: "UserId" }); //products
 
 //Muchos productos pueden estar en una misma orden y distintas ordenes pueden tener a los mismos productos
-Product.belongsToMany(Order, { through: Details, foreignKey:"ProductId" }); //orders
-Order.belongsToMany(Product,{ through: Details , foreignKey:"OrderId"}); //products
+Product.belongsToMany(Order, { through: Details, foreignKey: "ProductId" }); //orders
+Order.belongsToMany(Product, { through: Details, foreignKey: "OrderId" }); //products
 
 //Un usuario puede tener varias ordenes, pero cada orden pertenece a un único usuario
-Order.belongsTo(Users, {as:"user", foreignKey:{name: 'UserId'} }); //user
-Users.hasMany(Order, {as:"orders",foreignKey:{name:'UserId'}  }); //orders
-
+Order.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user
+Users.hasMany(Order, { as: "orders", foreignKey: { name: "UserId" } }); //orders
 
 //puntuacion y comentarios del usuario a un producto
-Product.belongsToMany(Users, {through:Reviews});
-Users.belongsToMany(Product, {through:Reviews});
+Product.belongsToMany(Users, { through: Reviews });
+Users.belongsToMany(Product, { through: Reviews });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
