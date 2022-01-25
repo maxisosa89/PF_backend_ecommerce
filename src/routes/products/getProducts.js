@@ -37,7 +37,7 @@ while (qty > 0) {
     name: names[Math.round(Math.random() * 9)],
     img: [index, index, index, index, index],
     price: Math.round(Math.random() * 100) + 50,
-    description:
+    description: 
       "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
     aditionalInformation:
       "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
@@ -70,7 +70,7 @@ const getProducts = async (req, res) => {
 
       const findedProduct = await Product.findOne({
         where: {
-          name: el,
+          name: el.name,
         },
       });
 
