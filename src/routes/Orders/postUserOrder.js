@@ -5,8 +5,6 @@ require('dotenv').config();
 const {STRIPE_CONN} = process.env;
 const stripe = new Stripe(STRIPE_CONN);
 
-const {ShopConfirm} = require('../../EmailsFunctions/ShopConfirm')
-const {SendEmails} = require('../../EmailsFunctions/SendEmails')
 
 const postUserOrder = async(req, res,next)=>{
   try {
