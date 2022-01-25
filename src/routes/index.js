@@ -11,6 +11,7 @@ const { putOrder } = require("./Orders/putOrder.js");
 const { putUserCart } = require("./Cart/putUserCart");
 const { getUserCart } = require("./Cart/getUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
+const { getCategories } = require("./categories/getCategories")
 
 /*          Configuracion de rutas:        */
 // USER:
@@ -28,6 +29,7 @@ router.put("/products", putProducts);
 
 
 //CATEGORIES:
+router.get("/categories", getCategories);
 
 // ORDER:
 router.get("/orders/:UserId", getUserOrders);
