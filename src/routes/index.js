@@ -1,6 +1,9 @@
 const router = require("express").Router();
 
 // Importe de todas las rutas:
+const { getProducts } = require("./products/getProducts");
+const { postProducts } = require("./products/postProducts");
+const { putProducts } = require("./products/putProducts");
 const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
 const { getAllOrders } = require("./Orders/getAllOrders.js");
@@ -8,6 +11,8 @@ const { putOrder } = require("./Orders/putOrder.js");
 const { putUserCart } = require("./Cart/putUserCart");
 const { getUserCart } = require("./Cart/getUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
+const { getCategories } = require("./categories/getCategories")
+const { postCategories } = require("./categories/postCategories")
 
 /*          Configuracion de rutas:        */
 // USER:
@@ -19,7 +24,15 @@ router.delete("/cart/:UserId", deleteUserCart);
 
 // PRODUCT:
 
+router.get("/products", getProducts);
+router.post("/products", postProducts);
+router.put("/products", putProducts);
+
+
 //CATEGORIES:
+router.get("/categories", getCategories);
+router.post("/categories", postCategories);
+
 
 // ORDER:
 router.get("/orders/:UserId", getUserOrders);

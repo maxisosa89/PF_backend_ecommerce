@@ -42,14 +42,18 @@ const { Users, Product, Cart, Order, Details, Categories } = sequelize.models;
 
 // Aca vendrian las relaciones
 
+//Muchos productos pueden estar en una misma orden y distintas ordenes pueden tener a los mismos productos
+Product.belongsToMany(Categories, { through: "Product_categories" }); //orders
+Categories.belongsToMany(Product, { through: "Product_categories" }); //products
+
 //Cada usuario puede guardar en su carrito muchos productos, y estos productos pueden ser los mismos para distintos usuarios
 //Cart es una relacion entre usuarios y productos
-Product.belongsToMany(Users, { through: Cart, foreignKey: "ProductId" }); //users
-Users.belongsToMany(Product, { through: Cart, foreignKey: "UserId" }); //products
+Product.belongsToMany(Users, { through: "Product_users" }); //users
+Users.belongsToMany(Product, { through: "Product_users" }); //products
 
 //Muchos productos pueden estar en una misma orden y distintas ordenes pueden tener a los mismos productos
-Product.belongsToMany(Order, { through: Details, foreignKey: "ProductId" }); //orders
-Order.belongsToMany(Product, { through: Details, foreignKey: "OrderId" }); //products
+Product.belongsToMany(Order, { through: "Product_order" }); //orders
+Order.belongsToMany(Product, { through: "Product_order" }); //products
 
 //Un usuario puede tener varias ordenes, pero cada orden pertenece a un único usuario
 Order.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user

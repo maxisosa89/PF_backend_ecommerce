@@ -1,6 +1,18 @@
 const router = require("express").Router();
-const { Product } = require("../../db.js");
+const { Categories } = require("../../db.js");
 
-export const postProducts = async (req, res) => {};
+const postCategories = async (req, res) => {
+    const { name, img } = req.body;
+    const active = true;
+    let categoryCreate = await Categories.findOrCreate({
+        where: { name },
+        defaults: {
+          name,
+          active,
+          img
+        },
+      });
+    res.send(categoryCreate);
+};
 
-module.exports = { postProducts };
+module.exports = { postCategories };
