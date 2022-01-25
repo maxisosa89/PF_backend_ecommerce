@@ -56,8 +56,8 @@ Order.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user
 Users.hasMany(Order, { as: "orders", foreignKey: { name: "UserId" } }); //orders
 
 //puntuacion y comentarios del usuario a un producto
-Product.belongsToMany(Users, { through: "Reviews" });
-Users.belongsToMany(Product, { through: "Reviews" });
+Product.belongsToMany(Users, { through: "reviews" });
+Users.belongsToMany(Product, { through: "reviews" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
