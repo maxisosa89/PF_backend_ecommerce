@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 // Importe de todas las rutas:
 const { getProducts } = require("./products/getProducts");
+const { getProductDetail } = require("./products/getProductDetail");
 const { postProducts } = require("./products/postProducts");
 const { putProducts } = require("./products/putProducts");
 const { getUserOrders } = require("./Orders/getUserOrders.js");
@@ -26,6 +27,7 @@ router.delete("/cart/:UserId", deleteUserCart);
 // PRODUCT:
 
 router.get("/products", getProducts);
+router.get("/products/:id", getProductDetail);
 router.post("/products", postProducts);
 router.put("/products", putProducts);
 

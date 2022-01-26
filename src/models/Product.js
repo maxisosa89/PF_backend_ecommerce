@@ -20,6 +20,9 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    ranking: {
+      type: DataTypes.INTEGER,
+    },
     description: {
       type: DataTypes.STRING,
     },

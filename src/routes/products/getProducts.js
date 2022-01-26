@@ -36,6 +36,7 @@ while (qty > 0) {
   arr.push({
     name: names[Math.round(Math.random() * 9)],
     img: [index, index, index, index, index],
+    ranking: Math.round(Math.random() * 5),
     price: Math.round(Math.random() * 100) + 50,
     description:
       "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
