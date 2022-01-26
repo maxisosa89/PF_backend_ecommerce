@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const { Product, Categories } = require("../../db.js");
 
 var images = [
@@ -64,7 +63,7 @@ const getProducts = async (req, res) => {
         where: {
           name: allCategories[
             Math.round((allCategories.length - 1) * Math.random())
-          ].name,
+          ].name
         },
       });
 
