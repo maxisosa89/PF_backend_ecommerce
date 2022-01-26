@@ -1,0 +1,81 @@
+[
+  [{
+    "name": "Grey’s Metal Belt",
+    "price": 86,
+    "soldQty": 0,
+    "img": [
+      "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg",
+      "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg",
+      "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg", "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg", "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg"
+    ],
+    "info": null,
+    "description": "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
+    "aditionalInformation": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
+    "stock": {
+      "xs": 100,
+      "s": 100,
+      "m": 100,
+      "l": 100,
+      "xl": 100,
+      "xxl": 100
+    },
+    "createdAt": "2022-01-26T00:02:31.858Z",
+    "updatedAt": "2022-01-26T00:02:31.858Z",
+    "categories": ["Women Clothing", "Men Clothing"]
+  }, {
+    "name": "Crescent Bay Wallet Grey",
+    "price": 110,
+    "soldQty": 0,
+    "img": [
+      "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg",
+      "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg",
+      "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg", "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg", "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg"
+    ],
+    "info": null,
+    "description": "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
+    "aditionalInformation": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
+    "stock": {
+      "xs": 100,
+      "s": 100,
+      "m": 100,
+      "l": 100,
+      "xl": 100,
+      "xxl": 100
+    },
+    "createdAt": "2022-01-26T00:02:31.858Z",
+    "updatedAt": "2022-01-26T00:02:31.858Z",
+    "categories": ["Women Clothing", "Men Clothing", "Jeans"]
+  }],
+  [
+    {
+      "name": "Women Clothing",
+      "active": true,
+      "img": "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/1-370x497.jpg"
+    },
+    {
+      "name": "Men Clothing",
+      "active": true,
+      "img": "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/13-370x497.jpg"
+    },
+    {
+      "name": "Dresses",
+      "active": true,
+      "img": "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/18_4-370x497.jpg"
+    },
+    {
+      "name": "Jeans",
+      "active": true,
+      "img": "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_3-370x497.jpg"
+    },
+    {
+      "name": "Shoes",
+      "active": true,
+      "img": "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/2-370x497.jpg"
+    },
+    {
+      "name": "Lingerie",
+      "active": true,
+      "img": "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/14_1-370x497.jpg"
+    }
+  ]
+]

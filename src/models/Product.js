@@ -1,10 +1,14 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (sequelize) => {
   // Defino el modelo:
   sequelize.define("product", {
-    idProduct:{
-      type: DataTypes.UUID
+    
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      allowNull: false,
+      defaultValue:DataTypes.UUIDV4
     },
     name: {
       type: DataTypes.STRING,
@@ -16,7 +20,8 @@ module.exports = (sequelize) => {
     },
   
     soldQty:{
-      type:DataTypes.INTEGER
+      type:DataTypes.INTEGER,
+      defaultValue:0
     },
     img: {
       type: DataTypes.ARRAY(DataTypes.STRING),
