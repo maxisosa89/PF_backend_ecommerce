@@ -53,13 +53,13 @@ while (qty > 0) {
 }
 
 const getProducts = async (req, res) => {
-  try {
-    const allCategories = await Categories.findAll();
-    const allProducts = await Product.findAll();
-    !allProducts.length && (await Product.bulkCreate(arr));
-    const relatedProducts = await Product.findAll();
+  const allCategories = await Categories.findAll();
+  let allProducts = await Product.findAll();
+  !allProducts.length && (await Product.bulkCreate(arr));
+  allProducts = await Product.findAll();
 
-    relatedProducts.map(async (el) => {
+  try {
+    allProducts?.map(async (el) => {
       const findedCategory = await Categories.findOne({
         where: {
           name: allCategories[
@@ -70,14 +70,14 @@ const getProducts = async (req, res) => {
 
       const findedProduct = await Product.findOne({
         where: {
-          name: el.name,
+          id: el.id,
         },
       });
 
       findedProduct.addCategories(findedCategory);
     });
 
-    const productsAndCategory = await Product.findAll({
+    let productsAndCategory = await Product.findAll({
       include: [
         {
           model: Categories,
@@ -88,7 +88,6 @@ const getProducts = async (req, res) => {
         },
       ],
     });
-
     res.json(productsAndCategory);
   } catch (error) {
     res.json(console.log);
