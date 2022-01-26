@@ -25,7 +25,6 @@ router.get("/cart/:UserId", getUserCart);
 router.delete("/cart/:UserId", deleteUserCart);
 
 // PRODUCT:
-
 router.get("/products", getProducts);
 router.get("/products/:id", getProductDetail);
 router.post("/products", postProducts);
@@ -40,6 +39,7 @@ router.put("/categories", putCategories);
 router.get("/orders/:UserId", getUserOrders);
 router.get("/orders/:UserId/:OrderId", getUserOrders);
 router.post("/order/:UserId", postUserOrder);
+
 //ORDER ADMIN:
 router.get("/orders", getAllOrders);
 router.put("/order/:OrderId", putOrder);
