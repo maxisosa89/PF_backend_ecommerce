@@ -7,8 +7,8 @@ const { postProducts } = require("./products/postProducts");
 const { putProducts } = require("./products/putProducts");
 
 const { getPromos } = require("./promos/getPromos");
-const { postPrmos } = require("./promos/postPromos");
-const { putPrmos } = require("./promos/putPromos");
+const { postPromos } = require("./promos/postPromos");
+const { putPromos } = require("./promos/putPromos");
 
 const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
@@ -38,6 +38,11 @@ router.get("/products", getProducts);
 router.get("/products/:id", getProductDetail);
 router.post("/products", postProducts);
 router.put("/products", putProducts);
+
+//PROMOS:
+router.get("/promos", getPromos);
+router.post("/promos", postPromos);
+router.put("/promos", putPromos);
 
 //CATEGORIES:
 router.get("/categories", getCategories);
