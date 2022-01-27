@@ -5,20 +5,28 @@ const { getProducts } = require("./products/getProducts");
 const { getProductDetail } = require("./products/getProductDetail");
 const { postProducts } = require("./products/postProducts");
 const { putProducts } = require("./products/putProducts");
+
+const { getPromos } = require("./promos/getPromos");
+const { postPrmos } = require("./promos/postPromos");
+const { putPrmos } = require("./promos/putPromos");
+
 const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
 const { getAllOrders } = require("./Orders/getAllOrders.js");
 const { putOrder } = require("./Orders/putOrder.js");
+
 const { putUserCart } = require("./Cart/putUserCart");
 const { getUserCart } = require("./Cart/getUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
+
 const { getCategories } = require("./categories/getCategories");
 const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
 
+const { postUsers } = require("./Users/routePostAccount");
 /*          Configuracion de rutas:        */
 // USER:
-
+router.post("/postAccount/", postUsers);
 // CART:
 router.put("/cart/:UserId", putUserCart);
 router.get("/cart/:UserId", getUserCart);
