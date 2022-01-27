@@ -22,18 +22,19 @@ const { deleteUserCart } = require("./Cart/deleteUserCart");
 const { getCategories } = require("./categories/getCategories");
 const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
-
 const { postUsers } = require("./Users/routePostAccount");
+const { getActualUser } = require("./Users/getActualUser");
 /*          Configuracion de rutas:        */
 // USER:
-router.post("/postAccount/", postUsers);
+router.post("/postAccount", postUsers);
+router.get("/actualUser/:email", getActualUser);
+
 // CART:
 router.put("/cart/:UserId", putUserCart);
 router.get("/cart/:UserId", getUserCart);
 router.delete("/cart/:UserId", deleteUserCart);
 
 // PRODUCT:
-
 router.get("/products", getProducts);
 router.get("/products/:id", getProductDetail);
 router.post("/products", postProducts);
@@ -53,6 +54,7 @@ router.put("/categories", putCategories);
 router.get("/orders/:UserId", getUserOrders);
 router.get("/orders/:UserId/:OrderId", getUserOrders);
 router.post("/order/:UserId", postUserOrder);
+
 //ORDER ADMIN:
 router.get("/orders", getAllOrders);
 router.put("/order/:OrderId", putOrder);
