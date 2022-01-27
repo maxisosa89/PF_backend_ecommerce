@@ -141,23 +141,23 @@ conn.sync({ force: true }).then(() => {
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
-    allProducts.map(async (el) => {
-      const findedCategory = await Categories.findOne({
-        where: {
-          name: allCategories[
-            Math.round((allCategories.length - 1) * Math.random())
-          ].name,
-        },
-      });
+    // allProducts.map(async (el) => {
+    //   const findedCategory = await Categories.findOne({
+    //     where: {
+    //       name: allCategories[
+    //         Math.round((allCategories.length - 1) * Math.random())
+    //       ].name,
+    //     },
+    //   });
 
-      const findedProduct = await Product.findOne({
-        where: {
-          name: el.name,
-        },
-      });
+    //   const findedProduct = await Product.findOne({
+    //     where: {
+    //       name: el.name,
+    //     },
+    //   });
 
-      findedProduct.addCategories(findedCategory);
-    });
+    //   findedProduct.addCategories(findedCategory);
+    // });
     await Promos.bulkCreate(defaultPromos);
   });
 });
