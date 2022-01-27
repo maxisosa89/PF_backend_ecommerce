@@ -16,10 +16,11 @@ const { getCategories } = require("./categories/getCategories");
 const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
 const { postUsers } = require("./Users/routePostAccount");
-
+const { getActualUser } = require("./Users/getActualUser");
 /*          Configuracion de rutas:        */
 // USER:
 router.post("/postAccount", postUsers);
+router.get("/actualUser/:email", getActualUser);
 
 // CART:
 router.put("/cart/:UserId", putUserCart);

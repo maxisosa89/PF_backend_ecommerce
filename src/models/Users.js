@@ -23,6 +23,30 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  
+    
+    address: {
+      type: DataTypes.STRING
+    },
+
+    cp: {
+      type: DataTypes.STRING
+    },
+
+    state: {
+      type: DataTypes.STRING
+    },
+
+    admin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
+
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
+
   }, {timestamps: false});
 };
