@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Product } = require("../../db.js");
+const { Product, Categories } = require("../../db.js");
 
 const getProductDetail = async (req, res) => {
   const { id } = req.params;
@@ -8,6 +8,15 @@ const getProductDetail = async (req, res) => {
       where: {
         id,
       },
+      include: [
+        {
+          model: Categories,
+          attributes: ["name"], // se relacionan las actividades de cada país
+          through: {
+            attributes: [],
+          },
+        },
+      ],
     });
     res.json(Detail);
   } catch (error) {

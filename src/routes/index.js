@@ -5,13 +5,20 @@ const { getProducts } = require("./products/getProducts");
 const { getProductDetail } = require("./products/getProductDetail");
 const { postProducts } = require("./products/postProducts");
 const { putProducts } = require("./products/putProducts");
+
+const { getPromos } = require("./promos/getPromos");
+const { postPromos } = require("./promos/postPromos");
+const { putPromos } = require("./promos/putPromos");
+
 const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
 const { getAllOrders } = require("./Orders/getAllOrders.js");
 const { putOrder } = require("./Orders/putOrder.js");
+
 const { putUserCart } = require("./Cart/putUserCart");
 const { getUserCart } = require("./Cart/getUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
+
 const { getCategories } = require("./categories/getCategories");
 const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
@@ -32,6 +39,11 @@ router.get("/products", getProducts);
 router.get("/products/:id", getProductDetail);
 router.post("/products", postProducts);
 router.put("/products", putProducts);
+
+//PROMOS:
+router.get("/promos", getPromos);
+router.post("/promos", postPromos);
+router.put("/promos", putPromos);
 
 //CATEGORIES:
 router.get("/categories", getCategories);
