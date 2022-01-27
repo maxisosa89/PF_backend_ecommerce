@@ -19,7 +19,7 @@ const { postUsers } = require("./Users/routePostAccount");
 
 /*          Configuracion de rutas:        */
 // USER:
-router.post("/postuser", postUsers);
+router.post("/postAccount", postUsers);
 
 // CART:
 router.put("/cart/:UserId", putUserCart);
