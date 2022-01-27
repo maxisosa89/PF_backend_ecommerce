@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Users } = require("../../db");
+const { Users, Cart } = require("../../db");
 
 const postUsers =
   ("/",
@@ -13,6 +13,16 @@ const postUsers =
         picture,
       },
     });
+    let auxiliar = await Users.findOne({
+      where: { email },
+      include: {
+        model: Cart,
+        attributes: ['id'],
+        through: {
+            attributes: [],
+        },
+    }
+    })
     res.sendStatus(200);
   });
 

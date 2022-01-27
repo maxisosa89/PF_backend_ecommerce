@@ -141,7 +141,7 @@ conn.sync({ force: true }).then(() => {
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
-    allProducts.map(async (el) => {
+    /* allProducts.map(async (el) => {
       const findedCategory = await Categories.findOne({
         where: {
           name: allCategories[
@@ -157,7 +157,7 @@ conn.sync({ force: true }).then(() => {
       });
 
       findedProduct.addCategories(findedCategory);
-    });
+    }); */
     await Promos.bulkCreate(defaultPromos);
   });
 });

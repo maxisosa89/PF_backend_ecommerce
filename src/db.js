@@ -60,6 +60,10 @@ Order.belongsToMany(Product, { through: "Product_order" }); //products
 Order.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user
 Users.hasMany(Order, { as: "orders", foreignKey: { name: "UserId" } }); //orders
 
+//Un usuario puede tener varios carritos, pero cada carrito pertenece a un único usuario
+Cart.belongsTo(Users, { as: "user", foreignKey: { name: "UserCart" } }); //user
+Users.hasMany(Cart, { as: "cart", foreignKey: { name: "UserCart" } }); //cart
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
