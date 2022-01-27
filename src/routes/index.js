@@ -11,7 +11,7 @@ const { putOrder } = require("./Orders/putOrder.js");
 const { putUserCart } = require("./Cart/putUserCart");
 const { getUserCart } = require("./Cart/getUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
-const { getCategories } = require("./categories/getCategories");
+const { productRelations } = require("./categories/getCategories");
 const { postCategories } = require("./categories/postCategories");
 
 /*          Configuracion de rutas:        */
@@ -29,7 +29,7 @@ router.post("/products", postProducts);
 router.put("/products", putProducts);
 
 //CATEGORIES:
-router.get("/categories", getCategories);
+router.get("/categories", productRelations);
 router.post("/categories", postCategories);
 
 // ORDER:

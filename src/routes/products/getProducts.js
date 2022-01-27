@@ -37,7 +37,7 @@ while (qty > 0) {
     name: names[Math.round(Math.random() * 9)],
     img: [index, index, index, index, index],
     price: Math.round(Math.random() * 100) + 50,
-    description: 
+    description:
       "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
     aditionalInformation:
       "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
@@ -54,44 +54,32 @@ while (qty > 0) {
 
 const getProducts = async (req, res) => {
   try {
-  //   const allCategories = await Categories.findAll();
-  //   const allProducts = await Product.findAll();
-  //   !allProducts.length && (await Product.bulkCreate(arr));
-  //   const relatedProducts = await Product.findAll();
+    const allCategories = await Categories.findAll();
+    const allProducts = await Product.findAll();
+    !allProducts.length && (await Product.bulkCreate(arr));
+    const relatedProducts = await Product.findAll();
 
-  //   relatedProducts.map(async (el) => {
-  //     const findedCategory = await Categories.findOne({
-  //       where: {
-  //         name: allCategories[
-  //           Math.round((allCategories.length - 1) * Math.random())
-  //         ].name,
-  //       },
-  //     });
-
-  //     const findedProduct = await Product.findOne({
-  //       where: {
-  //         name: el.name,
-  //       },
-  //     });
-
-  //     findedProduct.addCategories(findedCategory);
-  //   });
-
-    const productsAndCategory = await Product.findAll({
-      include: [
-        {
-          model: Categories,
-          attributes: ["name"],
-          through: {
-            attributes: [],
-          },
+    relatedProducts.map(async (el) => {
+      const findedCategory = await Categories.findOne({
+        where: {
+          name: allCategories.map(c=>{
+            el.categories.includes(c)?c:null
+          })
         },
-      ],
-    });
+      });
 
-    res.json(productsAndCategory);
+      const findedProduct = await Product.findOne({
+        where: {
+          name: el.name,
+        },
+      });
+
+      findedProduct.addCategories(findedCategory);
+      console.log(findedProduct)
+    });
+    res.json(relatedProducts);
   } catch (error) {
-    res.json(console.log);
+    console.log(error)
   }
 };
 

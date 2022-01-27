@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { Product, Categories } = require("../../db")
-const data = require('../../data.json')
+const { Product, Categories } = require("../db")
+const data = require('../data.json')
 
 
 const productRelations = async () => {
@@ -50,4 +50,6 @@ const productRelations = async () => {
     console.log("ERROR", error)
   }
 };
+
+
 module.exports = { productRelations };
