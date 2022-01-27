@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Users } = require("../../db");
 
-export const postUsers =
+const postUsers =
   ("/",
   async (req, res) => {
     const { name, picture, email } = req.body;
