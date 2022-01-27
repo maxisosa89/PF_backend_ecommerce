@@ -56,26 +56,26 @@ const getProducts = async (req, res) => {
   try {
     const allCategories = await Categories.findAll();
     const allProducts = await Product.findAll();
-    !allProducts.length && (await Product.bulkCreate(arr));
+    // !allProducts.length && (await Product.bulkCreate(arr));
     const relatedProducts = await Product.findAll();
 
-    relatedProducts.map(async (el) => {
-      const findedCategory = await Categories.findOne({
-        where: {
-          name: allCategories[
-            Math.round((allCategories.length - 1) * Math.random())
-          ].name,
-        },
-      });
+    // relatedProducts.map(async (el) => {
+    //   const findedCategory = await Categories.findOne({
+    //     where: {
+    //       name: allCategories[
+    //         Math.round((allCategories.length - 1) * Math.random())
+    //       ].name
+    //     },
+    //   });
 
-      const findedProduct = await Product.findOne({
-        where: {
-          name: el.name,
-        },
-      });
+    //   const findedProduct = await Product.findOne({
+    //     where: {
+    //       name: el.name,
+    //     },
+    //   });
 
-      findedProduct.addCategories(findedCategory);
-    });
+    //   findedProduct.addCategories(findedCategory);
+    // });
 
     const productsAndCategory = await Product.findAll({
       include: [

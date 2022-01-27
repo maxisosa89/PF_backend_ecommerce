@@ -15,12 +15,6 @@ const putProducts = async (req, res) => {
             stock: stock,
         };
 
-      
-
-
-
-
-
     } catch (error) {
         res.json({ error });
     }
