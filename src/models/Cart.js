@@ -17,6 +17,7 @@ module.exports = (sequelize) => {
         products:{
           type:DataTypes.ARRAY,
           allowNull: false,
+          defaultValue:[]
         }
     }, {timestamps: false});
 };
