@@ -136,8 +136,10 @@ conn.sync({ force: true }).then(() => {
       },
     ];
     cat = await Categories.bulkCreate(data);
-    const allProducts = await Product.findAll();
+    var allProducts = await Product.findAll();
     !allProducts.length && (await Product.bulkCreate(arr));
+    allProducts = await Product.findAll();
+    var allCategories = await Categories.findAll();
 
     allProducts.map(async (el) => {
       const findedCategory = await Categories.findOne({
