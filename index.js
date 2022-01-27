@@ -17,55 +17,59 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js')
-const { conn } = require('./src/db.js')
-const { Product, Categories } = require('../PF_backend_ecommerce/src/db')
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
+const {
+  Product,
+  Categories,
+  Promos,
+} = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
 
 // if (bool)
 // bulk
 var images = [
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/19_4-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/16-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_4-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/20_3-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/17_4-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/13-370x497.jpg',
-  'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/5-370x497.jpg',
-]
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/19_4-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/16-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_4-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/20_3-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/17_4-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/21_4-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/13-370x497.jpg",
+  "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/5-370x497.jpg",
+];
 
 var names = [
-  'Baheera’s Winter Jacket',
-  'Crescent Bay Wallet Grey',
-  'Men’s Shorts',
-  'Men’s Shorts',
-  'Knitted Gloves Turquoise',
-  'White top',
-  'Women’s T-Shirt',
-  'Grey’s Metal Belt',
-  'Mi-Pac Peruvian Stripe Backpack',
-  'bad clothe',
-]
+  "Baheera’s Winter Jacket",
+  "Crescent Bay Wallet Grey",
+  "Men’s Shorts",
+  "Men’s Shorts",
+  "Knitted Gloves Turquoise",
+  "White top",
+  "Women’s T-Shirt",
+  "Grey’s Metal Belt",
+  "Mi-Pac Peruvian Stripe Backpack",
+  "bad clothe",
+];
 
-var qty = 30
-let arr = []
+var qty = 30;
+let arr = [];
 
 while (qty > 0) {
-  qty -= 1
-  var index = images[Math.round(Math.random() * 9)]
+  qty -= 1;
+  var index = images[Math.round(Math.random() * 9)];
   arr.push({
     name: names[Math.round(Math.random() * 9)],
     img: [index, index, index, index, index],
     ranking: Math.round(Math.random() * 5),
     price: Math.round(Math.random() * 100) + 50,
     description:
-      'es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500',
+      "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
     aditionalInformation:
-      'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
+      "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
     stock: {
       xs: Math.round(Math.random() * 10),
       s: Math.round(Math.random() * 10),
@@ -74,64 +78,86 @@ while (qty > 0) {
       xl: Math.round(Math.random() * 10),
       xxl: Math.round(Math.random() * 10),
     },
-  })
+  });
 }
+
+var defaultPromos = [
+  {
+    title: "Gran promoción!",
+    img: "https://image.freepik.com/foto-gratis/foto-calle-hermosa-chica-anteojos-rojos-capucha-vestido-chaqueta-colorida-verde_8353-7008.jpg",
+    resume: "Por la compra de dos unidades te damos las gracias",
+  },
+  {
+    title: "ültima hora :O!",
+    img: "https://image.freepik.com/foto-gratis/mujer-hispana-riendo-alegremente-pared-graffiti-flores_181624-46424.jpg",
+    resume: "50% de descuento en una prenda tendencia",
+  },
+  {
+    title: "Puedes creer que..!",
+    img: "https://image.freepik.com/foto-gratis/mujer-hermosa-calle_144627-11073.jpg",
+    resume: "Compra 5 unidades y multiplicas el precio unitario por 5",
+  },
+];
+
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
-    console.log('%s listening at 3001') // eslint-disable-line no-
+    console.log("%s listening at 3001"); // eslint-disable-line no-
     const data = [
       {
-        name: 'Women Clothing',
+        name: "Women Clothing",
         active: true,
-        img: 'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/1-370x497.jpg',
+        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/1-370x497.jpg",
       },
       {
-        name: 'Men Clothing',
+        name: "Men Clothing",
         active: true,
-        img: 'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/13-370x497.jpg',
+        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/13-370x497.jpg",
       },
       {
-        name: 'Dresses',
+        name: "Dresses",
         active: true,
-        img: 'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/18_4-370x497.jpg',
+        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/18_4-370x497.jpg",
       },
       {
-        name: 'Jeans',
+        name: "Jeans",
         active: true,
-        img: 'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_3-370x497.jpg',
+        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_3-370x497.jpg",
       },
       {
-        name: 'Shoes',
+        name: "Shoes",
         active: true,
-        img: 'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/2-370x497.jpg',
+        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/2-370x497.jpg",
       },
       {
-        name: 'Lingerie',
+        name: "Lingerie",
         active: true,
-        img: 'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/14_1-370x497.jpg',
+        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/14_1-370x497.jpg",
       },
-    ]
-    cat = await Categories.bulkCreate(data)
-    const allProducts = await Product.findAll()
-    !allProducts.length && (await Product.bulkCreate(arr))
+    ];
+    cat = await Categories.bulkCreate(data);
+    var allProducts = await Product.findAll();
+    !allProducts.length && (await Product.bulkCreate(arr));
+    allProducts = await Product.findAll();
+    var allCategories = await Categories.findAll();
 
-    allProducts.map(async el => {
+    allProducts.map(async (el) => {
       const findedCategory = await Categories.findOne({
         where: {
           name: allCategories[
             Math.round((allCategories.length - 1) * Math.random())
           ].name,
         },
-      })
+      });
 
       const findedProduct = await Product.findOne({
         where: {
           name: el.name,
         },
-      })
+      });
 
-      findedProduct.addCategories(findedCategory)
-    })
-  })
-})
+      findedProduct.addCategories(findedCategory);
+    });
+    await Promos.bulkCreate(defaultPromos);
+  });
+});
