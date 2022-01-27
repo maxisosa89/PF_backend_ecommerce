@@ -15,9 +15,11 @@ const { deleteUserCart } = require("./Cart/deleteUserCart");
 const { getCategories } = require("./categories/getCategories");
 const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
+const { postUsers } = require("./Users/routePostAccount");
 
 /*          Configuracion de rutas:        */
 // USER:
+router.post("/postuser", postUsers);
 
 // CART:
 router.put("/cart/:UserId", putUserCart);
