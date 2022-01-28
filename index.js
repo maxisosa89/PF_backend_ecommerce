@@ -112,32 +112,32 @@ conn.sync({ force: true }).then(() => {
       {
         name: "Women Clothing",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/1-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/chica-adolescente-alegre-rastas-dientes-dorados-hace-gesto-paz-o-victoria-hace-graffiti-aerosol-vestida-ropa-moda_273609-47516.jpg",
       },
       {
         name: "Men Clothing",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/13-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/vista-posterior-persona-pie-delante-pared-graffiti-botella-spray_23-2147827678.jpg",
       },
       {
         name: "Dresses",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/18_4-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/mujer-pie-rainbow-village-taichung-taiwan_335224-610.jpg",
       },
       {
         name: "Jeans",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_3-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/mujer-tiro-completo-posando-graffiti_23-2149028824.jpg",
       },
       {
         name: "Shoes",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/2-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/hombre-corriendo-efecto-exposicion-doble-color_53876-102741.jpg",
       },
       {
         name: "Lingerie",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/14_1-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/closeup-retrato-joven-mujer-inconformista-sexy-hermosa-labios-rojos-gafas-sol_158538-10.jpg",
       },
     ];
     await Categories.bulkCreate(data);
