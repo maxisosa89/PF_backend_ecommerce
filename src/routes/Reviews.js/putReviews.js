@@ -3,11 +3,11 @@ const { Product, User, Reviews }=require('../../db');
 const PutReviews = async(req, res, next)=> {
 
     try {   
-        let { idReview } = req.params;
+        let { RewviewId } = req.params;
         let { score, description } = req.body;
 
         //busco si existe el producto por id
-        let rev = await Reviews.findByPk(idReview)
+        let rev = await Reviews.findByPk(RewviewId)
         //si no existe enviara un mensaje
         if (!rev) {
             res.status(404).json({

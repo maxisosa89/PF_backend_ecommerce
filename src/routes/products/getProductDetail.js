@@ -1,26 +1,26 @@
 const router = require("express").Router();
 const { Product, Categories } = require("../../db.js");
 
-const getProductDetail = async (req, res) => {
-  const { id } = req.params;
+const getProductDetail = async (req, res,next) => {
   try {
+    let { ProductId } = req.params;
     const Detail = await Product.findOne({
       where: {
-        id,
+        ProductId,
       },
-      include: [
-        {
-          model: Categories,
-          attributes: ["name"], // se relacionan las actividades de cada país
-          through: {
-            attributes: [],
-          },
-        },
-      ],
+      // include: [
+      //   {
+      //     model: Categories,
+      //     attributes: ["name"], // se relacionan las actividades de cada país
+      //     through: {
+      //       attributes: [],
+      //     },
+      //   },
+      // ],
     });
-    res.json(Detail);
+    res.status(200).json(Detail);
   } catch (error) {
-    res.json(error);
+    next(error);
   }
 };
 
