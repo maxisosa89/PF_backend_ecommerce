@@ -141,26 +141,16 @@ conn.sync({ force: true }).then(() => {
       },
     ];
     await Categories.bulkCreate(data);
-    await Product.bulkCreate(arr);
-    // var allCategories = await Categories.bulkCreate(data);
-    // var allProducts = await Product.bulkCreate(arr);
-    // allProducts.map(async (el) => {
-    //   const findedCategory = await Categories.findOne({
-    //     where: {
-    //       name: allCategories[
-    //         Math.round((allCategories.length - 1) * Math.random())
-    //       ].name,
-    //     },
-    //   });
-
-    //   const findedProduct = await Product.findOne({
-    //     where: {
-    //       name: el.name,
-    //     },
-    //   });
-
-    //   findedProduct.addCategories(findedCategory);
-    // });
+    const allProducts = await Product.bulkCreate(arr);
     await Promos.bulkCreate(defaultPromos);
+
+    allProducts.map(async (p) => {
+      const oneCategory = await Categories.findOne({
+        where: {
+          name: data[Math.round((data.length - 1) * Math.random())].name,
+        },
+      });
+      p.addCategories(oneCategory);
+    });
   });
 });
