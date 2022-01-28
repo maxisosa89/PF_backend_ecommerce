@@ -21,8 +21,14 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const {
   Product,
+  Cart,
   Categories,
   Promos,
+  Details,
+  Order,
+  Reviews,
+  Users,
+  Product_categories
 } = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
@@ -108,6 +114,18 @@ var defaultPromos = [
 conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
+    let variable = false;
+
+    await Cart.sync({force:variable});
+    await Categories.sync({force:variable});
+    await Details.sync({force:variable});
+    await Order.sync({force:variable});
+    await Product.sync({force:variable});
+    await Promos.sync({force:variable});
+    await Reviews.sync({force:variable})
+    await Users.sync({force:variable});
+    await Product_categories.sync({force:variable});
+    
     const data = [
       {
         name: "Women Clothing",
@@ -140,8 +158,32 @@ conn.sync({ force: true }).then(() => {
         img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/14_1-370x497.jpg",
       },
     ];
-    await Categories.bulkCreate(data);
-    const allProducts = await Product.bulkCreate(arr);
+
+    cat = await Categories.bulkCreate(data);
+    var allProducts = await Product.findAll();
+    !allProducts.length && (await Product.bulkCreate(arr));
+    allProducts = await Product.findAll();
+    var allCategories = await Categories.findAll();
+
+    
+    // allProducts.map(async (el) => {
+    //   const findedCategory = await Categories.findOne({
+    //     where: {
+    //       name: allCategories[
+    //         Math.round((allCategories.length - 1) * Math.random())
+    //       ].name,
+    //     },
+    //   });
+
+    //   const findedProduct = await Product.findOne({
+    //     where: {
+    //       name: el.name,
+    //     },
+    //   });
+
+    //   findedProduct.addCategories(findedCategory);
+    // });
+
     await Promos.bulkCreate(defaultPromos);
 
     allProducts.map(async (p) => {

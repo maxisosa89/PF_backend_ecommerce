@@ -4,10 +4,10 @@ const GetReviews = async(req, res, next)=> {
 
     try {
         
-        const { id } = req.params;
+        const { ProductId } = req.params;
         // console.log('idback :>> ', id);
         //busca si existe el id de producto
-        const prod = await Product.findByPk(id)
+        const prod = await Product.findByPk(ProductId)
         // console.log('prod.name :>> ', prod.name);
         //arrojara un mensaje si no existe el producto
         if (!prod) {
@@ -19,7 +19,7 @@ const GetReviews = async(req, res, next)=> {
         //busca todos los reviews con el id producto
         const revie = await Reviews.findAll({
             where:{
-                productIdProduct: prod.idProduct
+                productIdProduct: prod.ProductId
             }
         })
     
