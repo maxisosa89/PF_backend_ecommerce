@@ -21,8 +21,14 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const {
   Product,
+  Cart,
   Categories,
   Promos,
+  Details,
+  Order,
+  Reviews,
+  Users,
+  Product_categories
 } = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
@@ -103,6 +109,18 @@ var defaultPromos = [
 conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
+    let variable = false;
+
+    await Cart.sync({force:variable});
+    await Categories.sync({force:variable});
+    await Details.sync({force:variable});
+    await Order.sync({force:variable});
+    await Product.sync({force:variable});
+    await Promos.sync({force:variable});
+    await Reviews.sync({force:variable})
+    await Users.sync({force:variable});
+    await Product_categories.sync({force:variable});
+    
     const data = [
       {
         name: "Women Clothing",
@@ -141,6 +159,7 @@ conn.sync({ force: true }).then(() => {
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
+    
     // allProducts.map(async (el) => {
     //   const findedCategory = await Categories.findOne({
     //     where: {

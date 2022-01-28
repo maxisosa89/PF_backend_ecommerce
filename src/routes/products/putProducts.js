@@ -1,10 +1,10 @@
 const { Product } = require('../../db.js');
 
 
-const putProducts = async (req, res) => {
+const putProducts = async (req, res,next) => {
     
     const { name, img, price, description, aditionalInformation, stock, categories } = req.body;
-    const { id } = req.params;
+    const { ProductId } = req.params;
 
     try {
 
@@ -17,11 +17,11 @@ const putProducts = async (req, res) => {
             stock: stock,
         };
 
-        const productById = await Product.findByPk(id);
+        const productById = await Product.findOne({where:{ProductId}});
 
-        productById
-        ? await productById.update({ categories: categories })
-        : console.log("No se ha podido relacionar el producto con la categoria");
+        // productById
+        // ? await productById.update({ categories: categories })
+        // : console.log("No se ha podido relacionar el producto con la categoria");
 
         productById
         ? res.send(await productById.update(infoUpdateProduct))
@@ -29,7 +29,7 @@ const putProducts = async (req, res) => {
 
 
     } catch (error) {
-        res.json({ error });
+        next (error );
     }
 };
 
