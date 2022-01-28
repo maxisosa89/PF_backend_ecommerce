@@ -74,8 +74,13 @@ while (qty > 0) {
     price: Math.round(Math.random() * 100) + 50,
     description:
       "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-    aditionalInformation:
-      "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
+    aditionalInformation: {
+      manufacturer: "DataTypes.STRING",
+      material: "DataTypes.STRING",
+      occasion: "DataTypes.STRING",
+      fit: "DataTypes.STRING",
+      lining_material: "DataTypes.STRING",
+    },
     stock: {
       xs: Math.round(Math.random() * 10),
       s: Math.round(Math.random() * 10),
@@ -153,6 +158,7 @@ conn.sync({ force: true }).then(() => {
         img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/14_1-370x497.jpg",
       },
     ];
+
     cat = await Categories.bulkCreate(data);
     var allProducts = await Product.findAll();
     !allProducts.length && (await Product.bulkCreate(arr));
@@ -177,6 +183,16 @@ conn.sync({ force: true }).then(() => {
 
     //   findedProduct.addCategories(findedCategory);
     // });
+
     await Promos.bulkCreate(defaultPromos);
+
+    allProducts.map(async (p) => {
+      const oneCategory = await Categories.findOne({
+        where: {
+          name: data[Math.round((data.length - 1) * Math.random())].name,
+        },
+      });
+      p.addCategories(oneCategory);
+    });
   });
 });
