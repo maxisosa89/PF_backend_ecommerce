@@ -1,29 +1,29 @@
 const {Cart, Users} = require("../../db");
 const deleteUserCart = async(req,res,next)=>{
 try {
-  const {UserId} = req.params;
-  const {idProduct=null} = req.query;
-  let user = await Users.findByPk(UserId);
+  const {UsersId} = req.params;
+  const {ProductId=null} = req.query;
+  let user = await Users.findByPk(UsersId);
 
   let cart = null;
   
-  if(idProduct){
+  if(ProductId){
     //! console.log("pruebaidproduct",idProduct)
-    cart= await user.removeProduct(idProduct);
+    cart= await user.removeProduct(ProductId);
   }else{
     cart = await Cart.destroy({
       where:{
-        UserId
+        UsersId
       }
     });
   }
 
   let products = await user.getProducts({
-    attributes: ["idProduct","name", "price", "stock","image"]
+    attributes: ["ProductId","name", "price", "stock","img"]
   });
   products = products.map(el=>{
-    const{idProduct, name, price, stock,image, cart:{amount}} = el.toJSON()
-    return {idProduct, name, price, stock,image, amount, totalPrice:amount*price}
+    const{ProductId, name, price, stock,img, cart:{amount}} = el.toJSON()
+    return {ProductId, name, price, stock,img, amount, totalPrice:amount*price}
   })
 
   return res.status(200).json({cart:  products});

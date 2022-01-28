@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
   sequelize.define(
     "cart",
     {
-      id: {
+      CartId: {
         type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: UUIDV4,
@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: 0,
       },
-      products: {
+      productCart: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },

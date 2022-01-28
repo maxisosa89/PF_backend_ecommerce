@@ -21,8 +21,14 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const {
   Product,
+  Cart,
   Categories,
   Promos,
+  Details,
+  Order,
+  Reviews,
+  Users,
+  Product_categories
 } = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
@@ -68,8 +74,13 @@ while (qty > 0) {
     price: Math.round(Math.random() * 100) + 50,
     description:
       "es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
-    aditionalInformation:
-      "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit",
+    additionalInformation: {
+      manufacturer: "DataTypes.STRING",
+      material: "DataTypes.STRING",
+      occasion: "DataTypes.STRING",
+      fit: "DataTypes.STRING",
+      lining_material: "DataTypes.STRING",
+    },
     stock: {
       xs: Math.round(Math.random() * 10),
       s: Math.round(Math.random() * 10),
@@ -100,47 +111,61 @@ var defaultPromos = [
 ];
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
+    // let variable = false;
+
+    // await Cart.sync({force:variable});
+    // await Categories.sync({force:variable});
+    // await Details.sync({force:variable});
+    // await Order.sync({force:variable});
+    // await Product.sync({force:variable});
+    // await Promos.sync({force:variable});
+    // await Reviews.sync({force:variable})
+    // await Users.sync({force:variable});
+    // await Product_categories.sync({force:variable});
+    
     const data = [
       {
         name: "Women Clothing",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/1-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/chica-adolescente-alegre-rastas-dientes-dorados-hace-gesto-paz-o-victoria-hace-graffiti-aerosol-vestida-ropa-moda_273609-47516.jpg",
       },
       {
         name: "Men Clothing",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/13-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/vista-posterior-persona-pie-delante-pared-graffiti-botella-spray_23-2147827678.jpg",
       },
       {
         name: "Dresses",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/18_4-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/mujer-pie-rainbow-village-taichung-taiwan_335224-610.jpg",
       },
       {
         name: "Jeans",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/4_3-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/mujer-tiro-completo-posando-graffiti_23-2149028824.jpg",
       },
       {
         name: "Shoes",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/2-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/hombre-corriendo-efecto-exposicion-doble-color_53876-102741.jpg",
       },
       {
         name: "Lingerie",
         active: true,
-        img: "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/14_1-370x497.jpg",
+        img: "https://image.freepik.com/foto-gratis/closeup-retrato-joven-mujer-inconformista-sexy-hermosa-labios-rojos-gafas-sol_158538-10.jpg",
       },
     ];
+
     cat = await Categories.bulkCreate(data);
     var allProducts = await Product.findAll();
     !allProducts.length && (await Product.bulkCreate(arr));
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
+    
     // allProducts.map(async (el) => {
     //   const findedCategory = await Categories.findOne({
     //     where: {
@@ -158,6 +183,16 @@ conn.sync({ force: true }).then(() => {
 
     //   findedProduct.addCategories(findedCategory);
     // });
+
     await Promos.bulkCreate(defaultPromos);
+
+    allProducts.map(async (p) => {
+      const oneCategory = await Categories.findOne({
+        where: {
+          name: data[Math.round((data.length - 1) * Math.random())].name,
+        },
+      });
+      p.addCategories(oneCategory);
+    });
   });
 });
