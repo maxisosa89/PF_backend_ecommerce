@@ -12,11 +12,11 @@ const { putPromos } = require("./promos/putPromos");
 
 const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
-const { getAllOrders } = require("./Orders/getAllOrders.js");
 const { putOrder } = require("./Orders/putOrder.js");
 
-const { putUserCart } = require("./Cart/putUserCart");
+const { getAllCarts } = require("./Cart/getAllCarts.js");
 const { getUserCart } = require("./Cart/getUserCart");
+const { putUserCart } = require("./Cart/putUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
 
 const { getCategories } = require("./categories/getCategories");
@@ -56,7 +56,7 @@ router.get("/orders/:UserId/:OrderId", getUserOrders);
 router.post("/order/:UserId", postUserOrder);
 
 //ORDER ADMIN:
-router.get("/orders", getAllOrders);
+// router.get("/orders", getAllCarts);
 router.put("/order/:OrderId", putOrder);
 
 module.exports = router;

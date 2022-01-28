@@ -53,12 +53,12 @@ Product.belongsToMany(Users, { through: "Product_users" }); //users
 Users.belongsToMany(Product, { through: "Product_users" }); //products
 
 //Muchos productos pueden estar en una misma orden y distintas ordenes pueden tener a los mismos productos
-Product.belongsToMany(Order, { through: "Product_order" }); //orders
-Order.belongsToMany(Product, { through: "Product_order" }); //products
+Product.belongsToMany(Cart, { through: "Product_cart" }); //orders
+Cart.belongsToMany(Product, { through: "Product_cart" }); //products
 
 //Un usuario puede tener varias ordenes, pero cada orden pertenece a un único usuario
-Order.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user
-Users.hasMany(Order, { as: "orders", foreignKey: { name: "UserId" } }); //orders
+Cart.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user
+Users.hasMany(Cart, { as: "orders", foreignKey: { name: "UserId" } }); //orders
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
