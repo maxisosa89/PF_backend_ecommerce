@@ -57,8 +57,8 @@ Product.belongsToMany(Cart, { through: "Product_cart" }); //orders
 Cart.belongsToMany(Product, { through: "Product_cart" }); //products
 
 //Un usuario puede tener varias ordenes, pero cada orden pertenece a un único usuario
-Cart.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user
-Users.hasMany(Cart, { as: "orders", foreignKey: { name: "UserId" } }); //orders
+Cart.belongsToMany(Users, { through: "UserCart" }); //orders
+Users.belongsToMany(Cart, { through: "UserCart" }); //products
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

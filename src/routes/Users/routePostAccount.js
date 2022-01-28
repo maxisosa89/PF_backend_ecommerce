@@ -1,26 +1,21 @@
 const router = require("express").Router();
-const {Users} = require("../../db");
+const { Users, Cart } = require("../../db");
 
 const postUsers =
   ("/",
-    async (req, res,next) => {
-      try {
-        let {name, picture, email} = req.body;
-        let accountCreated = await Users.findOrCreate({
-          where: {email},
-          defaults:{
-             name, 
-             email, 
-             picture, 
-          },
-        });
-        res.status(200).json(accountCreated);
-      } catch (e) {
-        next(e)
+  async (req, res) => {
+    const { name, picture, email } = req.body;
+    try {
+      let validate = await Users.findOne({where: {email}})
+      if (!validate){
+        let accountCreated = await Users.create({name, email, picture});
+        let cartCreate = await Cart.create({productCart: []})
+        accountCreated.addCart(cartCreate)
       }
+      res.sendStatus(200);
+    } catch(err) {
+      console.log(err)
+    }
+  });
 
-    });
-
-module.exports = {
-  postUsers
-};
+module.exports = { postUsers };
