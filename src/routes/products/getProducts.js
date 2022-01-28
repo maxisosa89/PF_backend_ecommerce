@@ -7,7 +7,6 @@ const getProducts = async (req, res) => {
       include: [
         {
           model: Categories,
-          attributes: ["name"],
           through: {
             attributes: [],
           },
