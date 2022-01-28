@@ -1,12 +1,8 @@
 const router = require("express").Router();
 const { Product, Categories } = require("../../db.js");
 
-
-
 const getProducts = async (req, res) => {
   try {
-    
-    
     const productsAndCategory = await Product.findAll({
       include: [
         {
