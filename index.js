@@ -159,7 +159,8 @@ conn.sync({ force: false }).then(() => {
       },
     ];
 
-    cat = await Categories.bulkCreate(data);
+    var cat = await Categories.findAll();
+    !cat && (await Categories.bulkCreate(data));
     var allProducts = await Product.findAll();
     !allProducts.length && (await Product.bulkCreate(arr));
     allProducts = await Product.findAll();
