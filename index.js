@@ -111,20 +111,20 @@ var defaultPromos = [
 ];
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
-    let variable = false;
+    // let variable = false;
 
-    await Cart.sync({force:variable});
-    await Categories.sync({force:variable});
-    await Details.sync({force:variable});
-    await Order.sync({force:variable});
-    await Product.sync({force:variable});
-    await Promos.sync({force:variable});
-    await Reviews.sync({force:variable})
-    await Users.sync({force:variable});
-    await Product_categories.sync({force:variable});
+    // await Cart.sync({force:variable});
+    // await Categories.sync({force:variable});
+    // await Details.sync({force:variable});
+    // await Order.sync({force:variable});
+    // await Product.sync({force:variable});
+    // await Promos.sync({force:variable});
+    // await Reviews.sync({force:variable})
+    // await Users.sync({force:variable});
+    // await Product_categories.sync({force:variable});
     
     const data = [
       {
