@@ -27,7 +27,7 @@ const { getActualUser } = require("./Users/getActualUser");
 /*          Configuracion de rutas:        */
 // USER:
 router.post("/users", postUsers);
-router.get("/users/:UsersId", getActualUser);
+router.get("/users/:email", getActualUser);
 
 // CART:
 router.put("/cart/:UserId", putUserCart);
