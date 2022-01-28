@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const { Product, Categories } = require("../../db.js");
 
 const getProducts = async (req, res) => {
