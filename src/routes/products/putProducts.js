@@ -1,7 +1,7 @@
 const { Product } = require('../../db.js');
 
 
-const putProducts = async (req, res,next) => {
+const putProducts = async (req, res, next) => {
     
     const { name, img, price, description, additionalInformation, stock, categories } = req.body;
     const { ProductId } = req.params;
@@ -29,7 +29,7 @@ const putProducts = async (req, res,next) => {
 
 
     } catch (error) {
-        next (error );
+        next(error);
     }
 };
 
