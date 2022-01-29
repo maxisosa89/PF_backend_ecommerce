@@ -30,9 +30,9 @@ router.post("/users", postUsers);
 router.get("/users/:email", getActualUser);
 
 // CART:
-router.put("/cart/:UserId", putUserCart);
-router.get("/cart/:UserId", getUserCart);
-router.delete("/cart/:UserId", deleteUserCart);
+router.put("/cart/:UsersId/:CartId", putUserCart);
+router.get("/cart/:UsersId", getUserCart);
+router.delete("/cart/:UsersId", deleteUserCart);
 
 // PRODUCT:
 router.get("/products", getProducts);

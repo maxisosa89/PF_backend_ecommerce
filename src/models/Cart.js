@@ -19,7 +19,13 @@ module.exports = (sequelize) => {
       productCart: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
+        defaultValue:[]
       },
+      status:{
+        type:DataTypes.ENUM("created","paid","dispatched"),
+        defaultValue:"created",
+        allowNull:false
+      }
     },
     { timestamps: false }
   );

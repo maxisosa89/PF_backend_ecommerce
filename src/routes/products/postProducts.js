@@ -3,7 +3,7 @@ const { Product, Categories } = require('../../db.js');
 
 const postProducts = async (req, res,next) => {
   
-  const { name, img, price, description, aditionalInformation, stock, categories } = req.body;
+  const { name, img, price, description, aditionalInformation, stock } = req.body;
   
   try {
     
@@ -21,16 +21,7 @@ const postProducts = async (req, res,next) => {
       }
     );
 
-    // categories.map(async (c) => {
-    //   let category = await Categories.findOne(
-    //     {
-    //       where: { name: c }
-    //     }
-    //   )
-
-    //   newProduct.addCategory(category)
-
-    // });
+    
 
 
     res.status(200).json(newProduct);

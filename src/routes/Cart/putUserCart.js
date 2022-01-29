@@ -3,8 +3,8 @@ const {Cart, Users, Product} = require("../../db");
 
 const putUserCart = async (req,res,next)=>{
   try{
-    const {UsersId} = req.params;
-    const { productsInfo} = req.body;
+    const { UsersId, CartId } = req.params;
+    const { productsInfo } = req.body;
     //console.log("userid",UserId)
     //console.log("productsInfo",productsInfo)
     //[ Me dejo un arreglo con los ids de los productos que componen el nuevo carrito
