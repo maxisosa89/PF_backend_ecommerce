@@ -45,6 +45,9 @@ const updateProducts = async (req, res, next) => {
 
 module.exports = { updateProducts };
 
+
+
+
 /* JSON prueba para postman: post --> se guarda en la bd.
 
 {
