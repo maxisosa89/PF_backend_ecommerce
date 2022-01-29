@@ -15,6 +15,7 @@ const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
 const { putOrder } = require("./Orders/putOrder.js");
 
+const { getAllCarts } = require("./Cart/getAllCarts");
 const { getUserCart } = require("./Cart/getUserCart");
 const { putUserCart } = require("./Cart/putUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
@@ -31,8 +32,9 @@ router.post("/users", postUsers);
 router.get("/users/:email", getActualUser);
 
 // CART:
-router.put("/cart/:UsersId/:CartId", putUserCart);
+router.get("/carts", getAllCarts)
 router.get("/cart/:UsersId", getUserCart);
+router.put("/cart/:UsersId/:CartId", putUserCart);
 router.delete("/cart/:UsersId", deleteUserCart);
 
 // PRODUCT:
