@@ -1,7 +1,7 @@
 const { Product, Categories } = require('../../db.js');
 
 
-const postProducts = async (req, res,next) => {
+const updateProducts = async (req, res, next) => {
   
   const { name, img, price, description, aditionalInformation, stock } = req.body;
   
@@ -21,7 +21,16 @@ const postProducts = async (req, res,next) => {
       }
     );
 
-    
+    created && categories.map(async (c) => {
+      let category = await Categories.findOne(
+        {
+          where: { name: c }
+        }
+      );
+
+      newProduct.addCategory(category)
+
+    });
 
 
     res.status(200).json(newProduct);
@@ -30,12 +39,14 @@ const postProducts = async (req, res,next) => {
     next( error );
 
   }
+
 };
 
 
-module.exports = {
-  postProducts,
-};
+module.exports = { updateProducts };
+
+
+
 
 /* JSON prueba para postman: post --> se guarda en la bd.
 
