@@ -24,6 +24,9 @@ const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
 const { postUsers } = require("./Users/routePostAccount");
 const { getActualUser } = require("./Users/getActualUser");
+
+const { mercadoPagoPost } = require('./mercadoPago/mercadoPago.js');
+
 /*          Configuracion de rutas:        */
 // USER:
 router.post("/postAccount", postUsers);
@@ -58,5 +61,9 @@ router.post("/order/:UserId", postUserOrder);
 //ORDER ADMIN:
 // router.get("/orders", getAllCarts);
 router.put("/order/:OrderId", putOrder);
+
+//MERCADOPAGO:
+router.get("/checkout", mercadoPagoPost)
+
 
 module.exports = router;
