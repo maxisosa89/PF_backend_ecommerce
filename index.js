@@ -194,5 +194,35 @@ conn.sync({ force: false }).then(() => {
       });
       p.addCategories(oneCategory);
     });
+
+    const order = [
+      {
+        client:{
+          name: "Jordan Lemke" ,
+        },
+        products :{
+          id:3 ,
+          name:"Baheera’s Winter Jacket" ,
+          cantidad: 3 ,
+          price: 60 ,
+        },
+        
+        client:{
+          name: "Lilliana Jast" ,
+        },
+        products :{
+          id:3 ,
+          name:"White top" ,
+          cantidad: 1 ,
+          price: 20 ,
+        },      
+      }
+    ]
+
+    const orders = await Cart.bulkCreate(order)
+
+
+
+    
   });
 });
