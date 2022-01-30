@@ -3,7 +3,7 @@ const { Product } = require('../../db.js');
 
 const putProducts = async (req, res,next) => {
     
-    const { name, img, price, description, aditionalInformation, stock, categories } = req.body;
+    const { name, img, price, description, additionalInformation, stock, categories } = req.body;
     const { ProductId } = req.params;
 
     try {
@@ -13,7 +13,7 @@ const putProducts = async (req, res,next) => {
             img: img,
             price: price,
             description: description,
-            aditionalInformation: aditionalInformation,
+            additionalInformation: additionalInformation,
             stock: stock,
         };
 

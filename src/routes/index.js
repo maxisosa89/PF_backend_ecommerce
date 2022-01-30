@@ -3,7 +3,7 @@ const router = require("express").Router();
 // Importe de todas las rutas:
 const { getProducts } = require("./products/getProducts");
 const { getProductDetail } = require("./products/getProductDetail");
-const { postProducts } = require("./products/postProducts");
+const { updateProducts } = require("./products/postProducts");
 const { putProducts } = require("./products/putProducts");
 
 const { getPromos } = require("./promos/getPromos");
@@ -24,6 +24,7 @@ const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
 const { postUsers } = require("./Users/routePostAccount");
 const { getActualUser } = require("./Users/getActualUser");
+
 /*          Configuracion de rutas:        */
 // USER:
 router.post("/users", postUsers);
@@ -37,7 +38,7 @@ router.delete("/cart/:UserId", deleteUserCart);
 // PRODUCT:
 router.get("/products", getProducts);
 router.get("/products/:ProductId", getProductDetail);
-router.post("/products", postProducts);
+router.post("/products", updateProducts);
 router.put("/products/:ProductId", putProducts);
 
 //PROMOS:
@@ -58,5 +59,6 @@ router.put("/categories/:CategoriesId", putCategories);
 // //ORDER ADMIN:
 // router.get("/orders", getAllOrders);
 // router.put("/order/:OrderId", putOrder);
+
 
 module.exports = router;
