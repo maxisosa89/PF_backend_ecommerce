@@ -3,7 +3,7 @@ const { Product, Categories } = require('../../db.js');
 
 const updateProducts = async (req, res, next) => {
   
-  const { name, img, price, description, aditionalInformation, stock, categories } = req.body;
+  const { name, img, price, description, additionalInformation, stock, categories } = req.body;
   
   try {
     
@@ -15,14 +15,14 @@ const updateProducts = async (req, res, next) => {
           img,
           price,
           description,
-          aditionalInformation,
+          additionalInformation,
           stock
         }
       }
     );
 
     created && categories.map(async (c) => {
-      let category = await Categories.findOne(
+      const category = await Categories.findOne(
         {
           where: { name: c }
         }
@@ -32,12 +32,10 @@ const updateProducts = async (req, res, next) => {
 
     });
 
-
     res.status(200).json(newProduct);
   
   } catch (error) {
-    next( error );
-
+    next(error);
   }
 
 };

@@ -4,7 +4,7 @@ const router = require("express").Router();
 const { getProducts } = require("./products/getProducts");
 const { getProductDetail } = require("./products/getProductDetail");
 const { updateProducts } = require("./products/postProducts");
-const { putProducts } = require("./products/putProducts");
+const { updateProductAdm } = require("./products/putProducts");
 
 const { getPromos } = require("./promos/getPromos");
 const { postPromos } = require("./promos/postPromos");
@@ -39,7 +39,7 @@ router.delete("/cart/:UserId", deleteUserCart);
 router.get("/products", getProducts);
 router.get("/products/:ProductId", getProductDetail);
 router.post("/products", updateProducts);
-router.put("/products/:ProductId", putProducts);
+router.put("/products", updateProductAdm);
 
 //PROMOS:
 router.get("/promos", getPromos);
