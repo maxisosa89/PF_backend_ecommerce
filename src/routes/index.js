@@ -43,7 +43,7 @@ router.put("/products/:ProductId", putProducts);
 //PROMOS:
 router.get("/promos", getPromos);
 router.post("/promos", postPromos);
-router.put("/promos/:PromosId", putPromos);
+router.put("/promos", putPromos);
 
 //CATEGORIES:
 router.get("/categories", getCategories);
