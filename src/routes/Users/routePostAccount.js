@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Users, Cart } = require("../../db");
-
+// Post user
 const postUsers =
   ("/",
   async (req, res) => {
