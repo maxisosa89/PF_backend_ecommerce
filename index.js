@@ -194,5 +194,17 @@ conn.sync({ force: true }).then(() => {
       });
       p.addCategories(oneCategory);
     });
+
+    var defaultUsers = [
+      {
+        email: "maxisosa89@gmail.com",
+        name: "",
+        admin: true
+      },
+    ];
+    
+    await Users.bulkCreate(defaultUsers);
+
   });
 });
+
