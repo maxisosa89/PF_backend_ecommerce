@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: UUIDV4,
       },
+      user:{
+        type:DataTypes.STRING,
+        allowNull:true
+      },
       amount: {
         type: DataTypes.INTEGER,
         allowNull: false,
