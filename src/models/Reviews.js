@@ -1,9 +1,9 @@
-const { DataTypes }=require('sequelize');
+const { DataTypes, UUIDV4 } = require("sequelize");
 
 
 module.exports = (sequelize)=>{
     sequelize.define('reviews', {
-        idReviews:{
+        ReviewsId:{
             type:DataTypes.UUID,
             primaryKey: true,
             allowNull: false,
