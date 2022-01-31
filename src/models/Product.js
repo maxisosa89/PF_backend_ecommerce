@@ -3,14 +3,22 @@ const { DataTypes, UUIDV4 } = require("sequelize");
 module.exports = (sequelize) => {
   // Defino el modelo:
   sequelize.define("product", {
+    
     ProductId: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: UUIDV4,
     },
+    
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+
+    qty:{
+      type: DataTypes.INTEGER,
+      allowNull:true,
+      defaultValue:1
     },
 
     img: {
@@ -22,9 +30,11 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    
     ranking: {
       type: DataTypes.INTEGER,
     },
+  
     description: {
       type: DataTypes.STRING,
     },

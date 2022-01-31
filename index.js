@@ -31,20 +31,11 @@ const {
   Product_categories
 } = require("../PF_backend_ecommerce/src/db");
 
-const port = process.env.PORT || 3001;
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(port, async () => {
-    console.log("%s listening at port"); // eslint-disable-line no-
-    // let variable = false;
-  });
-});
-
 // let bool = true
 
 // if (bool)
 // bulk
-/* var images = [
+var images = [
   "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/19_4-370x497.jpg",
   "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/16-370x497.jpg",
   "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg",
@@ -117,8 +108,13 @@ var defaultPromos = [
     img: "https://image.freepik.com/foto-gratis/mujer-hermosa-calle_144627-11073.jpg",
     resume: "Compra 5 unidades y multiplicas el precio unitario por 5",
   },
-]; */
+];
 
+// Syncing all the models at once.
+conn.sync({ force: false }).then(() => {
+  server.listen(3001, async () => {
+    console.log("%s listening at 3001"); // eslint-disable-line no-
+    // let variable = false;
 
     // await Cart.sync({force:variable});
     // await Categories.sync({force:variable});
@@ -129,7 +125,7 @@ var defaultPromos = [
     // await Reviews.sync({force:variable})
     // await Users.sync({force:variable});
     // await Product_categories.sync({force:variable});
-/*     
+    
     const data = [
       {
         name: "Women Clothing",
@@ -197,4 +193,55 @@ var defaultPromos = [
         },
       });
       p.addCategories(oneCategory);
-    }); */
+    });
+
+    var defaultUsers = [
+      {
+        email: "maxisosa89@gmail.com",
+        name: "",
+        admin: true
+      },
+
+      {
+        email: "elecalderon.ec@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "elianh2015@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "oiaraque@hotmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "jonascript.cpu@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "ignaciogrillocaimary@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "etcheparede@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "nicolasmayorquinduran@gmail.com",
+        name: "",
+        admin: true
+      },
+
+    ];
+    let validate = await Users.findAll();
+    if (validate.length === 0){
+      await Users.bulkCreate(defaultUsers);
+    }
+  });
+});
