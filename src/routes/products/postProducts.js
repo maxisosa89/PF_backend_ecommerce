@@ -49,7 +49,6 @@ module.exports = { updateProducts };
 
 
 /* JSON prueba para postman: post --> se guarda en la bd.
-
 {
   "name": "Mi-Pac Peruvian Stripe Backpack",
   "img": [
@@ -87,5 +86,4 @@ module.exports = { updateProducts };
     }
   ]
 }
-
 */
