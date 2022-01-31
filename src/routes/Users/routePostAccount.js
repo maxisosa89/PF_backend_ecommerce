@@ -17,10 +17,7 @@ const postUsers =
       }
       if (validate.name === ""){
         validate.name = name;
-<<<<<<< HEAD
         validate.picture = picture;
-=======
->>>>>>> 1da35b7d8d654666ca7ed1d7e6e35a7b5d488137
         let cartCreate = await Cart.create({user:email})
         validate.addCart(cartCreate)
         await validate.save();
