@@ -13,6 +13,12 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
+    qty:{
+      type: DataTypes.INTEGER,
+      allowNull:true,
+      defaultValue:1
+    },
+
     img: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
