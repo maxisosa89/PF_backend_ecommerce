@@ -3,7 +3,7 @@ const { Product, Categories } = require('../../db.js');
 
 const updateProducts = async (req, res, next) => {
   
-  const { name, img, price, description, aditionalInformation, stock, categories } = req.body;
+  const { name, img, price, description, aditionalInformation, stock } = req.body;
   
   try {
     
