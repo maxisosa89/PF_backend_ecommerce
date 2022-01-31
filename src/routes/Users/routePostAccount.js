@@ -16,6 +16,12 @@ const postUsers =
         if (validate.name === "") validate.name = name;
         await validate.save();
       }
+      if (validate.name === ""){
+        validate.name = name;
+        let cartCreate = await Cart.create({productCart: []})
+        validate.addCart(cartCreate)
+        await validate.save();
+      }
 
       res.sendStatus(200);
     } catch(err) {
