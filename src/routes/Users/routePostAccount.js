@@ -11,7 +11,12 @@ const postUsers =
         let accountCreated = await Users.create({name, email, picture});
         let cartCreate = await Cart.create({productCart: []})
         accountCreated.addCart(cartCreate)
+      }else if (!validate.active) {
+        validate.active = true;
+        if (validate.name === "") validate.name = name;
+        await validate.save();
       }
+
       res.sendStatus(200);
     } catch(err) {
       console.log(err)

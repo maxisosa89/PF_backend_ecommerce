@@ -111,7 +111,7 @@ var defaultPromos = [
 ];
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
     // let variable = false;
@@ -194,5 +194,17 @@ conn.sync({ force: false }).then(() => {
       });
       p.addCategories(oneCategory);
     });
+
+    var defaultUsers = [
+      {
+        email: "maxisosa89@gmail.com",
+        name: "",
+        admin: true
+      },
+    ];
+    
+    await Users.bulkCreate(defaultUsers);
+
   });
 });
+
