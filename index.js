@@ -28,9 +28,8 @@ const {
   Order,
   Reviews,
   Users,
-  Product_categories
+  Product_categories,
 } = require("../PF_backend_ecommerce/src/db");
-
 
 // let bool = true
 
@@ -110,97 +109,95 @@ var defaultPromos = [
     resume: "Compra 5 unidades y multiplicas el precio unitario por 5",
   },
 ];
-
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, async () => {
-    console.log("%s listening at 3001"); // eslint-disable-line no-
-    // let variable = false;
-
-    // await Cart.sync({force:variable});
-    // await Categories.sync({force:variable});
-    // await Details.sync({force:variable});
-    // await Order.sync({force:variable});
-    // await Product.sync({force:variable});
-    // await Promos.sync({force:variable});
-    // await Reviews.sync({force:variable})
-    // await Users.sync({force:variable});
-    // await Product_categories.sync({force:variable});
-    
-    const data = [
-      {
-        name: "Women Clothing",
-        active: true,
-        img: "https://image.freepik.com/foto-gratis/chica-adolescente-alegre-rastas-dientes-dorados-hace-gesto-paz-o-victoria-hace-graffiti-aerosol-vestida-ropa-moda_273609-47516.jpg",
-      },
-      {
-        name: "Men Clothing",
-        active: true,
-        img: "https://image.freepik.com/foto-gratis/vista-posterior-persona-pie-delante-pared-graffiti-botella-spray_23-2147827678.jpg",
-      },
-      {
-        name: "Dresses",
-        active: true,
-        img: "https://image.freepik.com/foto-gratis/mujer-pie-rainbow-village-taichung-taiwan_335224-610.jpg",
-      },
-      {
-        name: "Jeans",
-        active: true,
-        img: "https://image.freepik.com/foto-gratis/mujer-tiro-completo-posando-graffiti_23-2149028824.jpg",
-      },
-      {
-        name: "Shoes",
-        active: true,
-        img: "https://image.freepik.com/foto-gratis/hombre-corriendo-efecto-exposicion-doble-color_53876-102741.jpg",
-      },
-      {
-        name: "Lingerie",
-        active: true,
-        img: "https://image.freepik.com/foto-gratis/closeup-retrato-joven-mujer-inconformista-sexy-hermosa-labios-rojos-gafas-sol_158538-10.jpg",
-      },
-    ];
-
-    cat = await Categories.bulkCreate(data);
-    var allProducts = await Product.findAll();
-    !allProducts.length && (await Product.bulkCreate(arr));
-    allProducts = await Product.findAll();
-    var allCategories = await Categories.findAll();
-
-    
-    // allProducts.map(async (el) => {
-    //   const findedCategory = await Categories.findOne({
-    //     where: {
-    //       name: allCategories[
-    //         Math.round((allCategories.length - 1) * Math.random())
-    //       ].name,
-    //     },
-    //   });
-
-    //   const findedProduct = await Product.findOne({
-    //     where: {
-    //       name: el.name,
-    //     },
-    //   });
-
-    //   findedProduct.addCategories(findedCategory);
-    // });
-
-    await Promos.bulkCreate(defaultPromos);
-
-    allProducts.map(async (p) => {
-      const oneCategory = await Categories.findOne({
-        where: {
-          name: data[Math.round((data.length - 1) * Math.random())].name,
-        },
-      });
-      p.addCategories(oneCategory);
-    });
-
 const port = process.env.PORT || 3001;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(port, async () => {
     console.log("%s listening at ", port); // eslint-disable-line no-console
-
   });
+  // conn.sync({ force: true }).then(() => {
+  //   server.listen(3001, async () => {
+  //     console.log("%s listening at 3001");
+
+  // eslint-disable-line no-
+  // let variable = false;
+
+  // await Cart.sync({force:variable});
+  // await Categories.sync({force:variable});
+  // await Details.sync({force:variable});
+  // await Order.sync({force:variable});
+  // await Product.sync({force:variable});
+  // await Promos.sync({force:variable});
+  // await Reviews.sync({force:variable})
+  // await Users.sync({force:variable});
+  // await Product_categories.sync({force:variable});
+
+  const data = [
+    {
+      name: "Women Clothing",
+      active: true,
+      img: "https://image.freepik.com/foto-gratis/chica-adolescente-alegre-rastas-dientes-dorados-hace-gesto-paz-o-victoria-hace-graffiti-aerosol-vestida-ropa-moda_273609-47516.jpg",
+    },
+    {
+      name: "Men Clothing",
+      active: true,
+      img: "https://image.freepik.com/foto-gratis/vista-posterior-persona-pie-delante-pared-graffiti-botella-spray_23-2147827678.jpg",
+    },
+    {
+      name: "Dresses",
+      active: true,
+      img: "https://image.freepik.com/foto-gratis/mujer-pie-rainbow-village-taichung-taiwan_335224-610.jpg",
+    },
+    {
+      name: "Jeans",
+      active: true,
+      img: "https://image.freepik.com/foto-gratis/mujer-tiro-completo-posando-graffiti_23-2149028824.jpg",
+    },
+    {
+      name: "Shoes",
+      active: true,
+      img: "https://image.freepik.com/foto-gratis/hombre-corriendo-efecto-exposicion-doble-color_53876-102741.jpg",
+    },
+    {
+      name: "Lingerie",
+      active: true,
+      img: "https://image.freepik.com/foto-gratis/closeup-retrato-joven-mujer-inconformista-sexy-hermosa-labios-rojos-gafas-sol_158538-10.jpg",
+    },
+  ];
+
+  cat = await Categories.bulkCreate(data);
+  var allProducts = await Product.findAll();
+  !allProducts.length && (await Product.bulkCreate(arr));
+  allProducts = await Product.findAll();
+  var allCategories = await Categories.findAll();
+
+  // allProducts.map(async (el) => {
+  //   const findedCategory = await Categories.findOne({
+  //     where: {
+  //       name: allCategories[
+  //         Math.round((allCategories.length - 1) * Math.random())
+  //       ].name,
+  //     },
+  //   });
+
+  //   const findedProduct = await Product.findOne({
+  //     where: {
+  //       name: el.name,
+  //     },
+  //   });
+
+  //   findedProduct.addCategories(findedCategory);
+  // });
+
+  await Promos.bulkCreate(defaultPromos);
+
+  allProducts.map(async (p) => {
+    const oneCategory = await Categories.findOne({
+      where: {
+        name: data[Math.round((data.length - 1) * Math.random())].name,
+      },
+    });
+    p.addCategories(oneCategory);
+  });
+});
