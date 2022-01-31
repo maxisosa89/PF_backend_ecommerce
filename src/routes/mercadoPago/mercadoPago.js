@@ -43,9 +43,9 @@ const mercadoPagoPost = async (req, res)=>{
 
 	mercadopago.preferences.create(preference)
 	.then(function(response){
-		// res.redirect(response.body.init_point)
+		res.redirect(response.body.init_point)
 		// console.log(response.body)
-		res.send(response.body)
+		// res.send(response.body)
 	})
 	.catch(function(err){
 		console.log(err);
