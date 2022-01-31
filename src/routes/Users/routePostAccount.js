@@ -13,11 +13,11 @@ const postUsers =
         accountCreated.addCart(cartCreate)
       }else if (!validate.active) {
         validate.active = true;
-        if (validate.name === "") validate.name = name;
         await validate.save();
       }
       if (validate.name === ""){
         validate.name = name;
+        validate.picture = picture;
         let cartCreate = await Cart.create({user:email})
         validate.addCart(cartCreate)
         await validate.save();
