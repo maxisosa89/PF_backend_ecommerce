@@ -22,13 +22,18 @@ const { deleteUserCart } = require("./Cart/deleteUserCart");
 const { getCategories } = require("./categories/getCategories");
 const { postCategories } = require("./categories/postCategories");
 const { putCategories } = require("./categories/putCategories");
+
 const { postUsers } = require("./Users/routePostAccount");
 const { getActualUser } = require("./Users/getActualUser");
+const { putUser } = require("./Users/putUser");
+
+const { mercadoPagoPost } = require("./mercadoPago/mercadoPago.js");
 
 /*          Configuracion de rutas:        */
 // USER:
 router.post("/users", postUsers);
 router.get("/users/:email", getActualUser);
+router.put("/users", putUser);
 
 // CART:
 router.put("/cart/:UserId", putUserCart);
@@ -59,5 +64,8 @@ router.put("/categories/:CategoriesId", putCategories);
 // //ORDER ADMIN:
 // router.get("/orders", getAllOrders);
 // router.put("/order/:OrderId", putOrder);
+
+//MERCADOPAGO:
+router.get("/checkout", mercadoPagoPost);
 
 module.exports = router;
