@@ -2,14 +2,17 @@ const router = require("express").Router();
 const { Promos } = require("../../db.js");
 
 const putPromos = async (req, res) => {
-  const { id, title, img, resume } = req.body;
+  const { PromosId, title, img, resume } = req.body;
   try {
-    let toEdit = await Promos.findOne({ where: { id } });
+    let toEdit = await Promos.findOne({ where: { PromosId } });
     toEdit.title = title;
     toEdit.img = img;
-    toEdit.active = resume;
+    toEdit.resume = resume;
     await toEdit.save();
-    res.json(toEdit);
+    res.json(
+      `Product edited:
+       ${toEdit}`
+    );
   } catch (error) {
     res.json(error);
   }
