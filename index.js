@@ -201,6 +201,31 @@ conn.sync({ force: true }).then(() => {
         name: "",
         admin: true
       },
+      {
+        email: "elecalderon.ec@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "elianh2015@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "oiaraque@hotmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "jonascript.cpu@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "ignaciogrillocaimary@gmail.com",
+        name: "",
+        admin: true
+      },
     ];
     
     await Users.bulkCreate(defaultUsers);
