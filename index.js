@@ -31,6 +31,7 @@ const {
   Product_categories,
 } = require("../PF_backend_ecommerce/src/db");
 
+
 // let bool = true
 
 // if (bool)
@@ -193,5 +194,12 @@ conn.sync({ force: true }).then(() => {
       });
       p.addCategories(oneCategory);
     });
+
+const port = process.env.PORT || 3001;
+
+// Syncing all the models at once.
+conn.sync({ force: true }).then(() => {
+  server.listen(port, async () => {
+    console.log("%s listening at ", port); // eslint-disable-line no-console
+
   });
-});
