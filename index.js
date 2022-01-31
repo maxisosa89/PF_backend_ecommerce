@@ -227,11 +227,22 @@ conn.sync({ force: false }).then(() => {
         name: "",
         admin: true
       },
+      {
+        email: "etcheparede@gmail.com",
+        name: "",
+        admin: true
+      },
+      {
+        email: "nicolasmayorquinduran@gmail.com",
+        name: "",
+        admin: true
+      },
 
     ];
-    
-    await Users.bulkCreate(defaultUsers);
-
+    let validate = await Users.findAll();
+    if (validate.length === 0){
+      await Users.bulkCreate(defaultUsers);
+    }
   });
 });
 
