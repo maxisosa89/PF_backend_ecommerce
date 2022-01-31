@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const { Product, Categories } = require("../../db.js");
 
 const getProducts = async (req, res) => {
@@ -7,7 +6,6 @@ const getProducts = async (req, res) => {
       include: [
         {
           model: Categories,
-          attributes: ["name"],
           through: {
             attributes: [],
           },

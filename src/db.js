@@ -5,10 +5,17 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/ecommerce`,
+  `postgres://vvrbxlsmxulcoj:29b475c39e9caa419b10535daeef5fe67ea6603154dce04a3e99808a13d9991b@ec2-18-235-114-62.compute-1.amazonaws.com:5432/dajb3dnqn52848`,
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
   }
 );
 const basename = path.basename(__filename);
@@ -57,8 +64,8 @@ Product.belongsToMany(Cart, { through: "Product_cart" }); //orders
 Cart.belongsToMany(Product, { through: "Product_cart" }); //products
 
 //Un usuario puede tener varias ordenes, pero cada orden pertenece a un único usuario
-Cart.belongsTo(Users, { as: "user", foreignKey: { name: "UserId" } }); //user
-Users.hasMany(Cart, { as: "orders", foreignKey: { name: "UserId" } }); //orders
+Cart.belongsToMany(Users, { through: "UserCart" }); //orders
+Users.belongsToMany(Cart, { through: "UserCart" }); //products
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
