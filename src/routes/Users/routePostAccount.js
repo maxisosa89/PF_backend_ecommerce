@@ -9,7 +9,7 @@ const postUsers =
       let validate = await Users.findOne({where: {email}})
       if (!validate){
         let accountCreated = await Users.create({name, email, picture});
-        let cartCreate = await Cart.create({productCart: []})
+        let cartCreate = await Cart.create({user:email})
         accountCreated.addCart(cartCreate)
       }else if (!validate.active) {
         validate.active = true;
