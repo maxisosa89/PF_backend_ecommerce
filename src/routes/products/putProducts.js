@@ -1,39 +1,34 @@
-const { Product } = require('../../db.js');
+const { Product, Categories } = require('../../db.js');
 
 
-const putProducts = async (req, res,next) => {
+const updateProductAdm = async (req, res, next) => {
     
-    const { name, img, price, description, additionalInformation, stock, categories } = req.body;
-    const { ProductId } = req.params;
+    const { name, ProductId, img, price, description, additionalInformation, stock } = req.body;
 
     try {
+            
+        let productUpdate = await Product.findOne(
+            { 
+                where: { ProductId }
+            }
+        );
+        
+        productUpdate.name = name
+        productUpdate.img = img
+        productUpdate.price = price
+        productUpdate.description = description
+        productUpdate.additionalInformation = additionalInformation
+        productUpdate.stock = stock
+        
+        
+        await productUpdate.save()
 
-        const infoUpdateProduct = {
-            name: name,
-            img: img,
-            price: price,
-            description: description,
-            additionalInformation: additionalInformation,
-            stock: stock,
-        };
-
-        const productById = await Product.findOne({where:{ProductId}});
-
-        // productById
-        // ? await productById.update({ categories: categories })
-        // : console.log("No se ha podido relacionar el producto con la categoria");
-
-        productById
-        ? res.send(await productById.update(infoUpdateProduct))
-        : res.send("No se ha podido actualizar el producto");
-
+        res.json("¡Actualizado!")
 
     } catch (error) {
-        next (error );
+        next(error);
     }
 };
 
 
-module.exports = { 
-    putProducts 
-};
+module.exports = { updateProductAdm };
