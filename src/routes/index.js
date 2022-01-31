@@ -66,6 +66,6 @@ router.put("/categories/:CategoriesId", putCategories);
 // router.put("/order/:OrderId", putOrder);
 
 //MERCADOPAGO:
-router.get("/checkout", mercadoPagoPost);
+router.post("/checkout", mercadoPagoPost);
 
 module.exports = router;
