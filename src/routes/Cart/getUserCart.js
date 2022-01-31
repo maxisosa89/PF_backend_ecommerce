@@ -17,6 +17,6 @@ const getUserCart = async (req,res,next)=>{
     console.log("Get users/cart/:Userid", err);
     next(err)
   }
-};
+}; 
 
 module.exports = {getUserCart};
