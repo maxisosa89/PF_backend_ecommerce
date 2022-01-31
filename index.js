@@ -28,7 +28,7 @@ const {
   Order,
   Reviews,
   Users,
-  Product_categories
+  Product_categories,
 } = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
@@ -125,7 +125,7 @@ conn.sync({ force: false }).then(() => {
     // await Reviews.sync({force:variable})
     // await Users.sync({force:variable});
     // await Product_categories.sync({force:variable});
-    
+
     const data = [
       {
         name: "Women Clothing",
@@ -165,7 +165,6 @@ conn.sync({ force: false }).then(() => {
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
-    
     // allProducts.map(async (el) => {
     //   const findedCategory = await Categories.findOne({
     //     where: {
