@@ -28,7 +28,7 @@ const {
   Order,
   Reviews,
   Users,
-  Product_categories
+  Product_categories,
 } = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
@@ -110,10 +110,12 @@ var defaultPromos = [
   },
 ];
 
+const port = process.env.PORT || 3001;
+
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
-  server.listen(3001, async () => {
-    console.log("%s listening at 3001"); // eslint-disable-line no-
+conn.sync({ force: true }).then(() => {
+  server.listen(port, async () => {
+    console.log("%s listening at ", port); // eslint-disable-line no-
     // let variable = false;
 
     // await Cart.sync({force:variable});
@@ -125,7 +127,7 @@ conn.sync({ force: false }).then(() => {
     // await Reviews.sync({force:variable})
     // await Users.sync({force:variable});
     // await Product_categories.sync({force:variable});
-    
+
     const data = [
       {
         name: "Women Clothing",
@@ -165,7 +167,6 @@ conn.sync({ force: false }).then(() => {
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
-    
     // allProducts.map(async (el) => {
     //   const findedCategory = await Categories.findOne({
     //     where: {
@@ -199,48 +200,47 @@ conn.sync({ force: false }).then(() => {
       {
         email: "maxisosa89@gmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
 
       {
         email: "elecalderon.ec@gmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
       {
         email: "elianh2015@gmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
       {
         email: "oiaraque@hotmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
       {
         email: "jonascript.cpu@gmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
       {
         email: "ignaciogrillocaimary@gmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
       {
         email: "etcheparede@gmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
       {
         email: "nicolasmayorquinduran@gmail.com",
         name: "",
-        admin: true
+        admin: true,
       },
-
     ];
     let validate = await Users.findAll();
-    if (validate.length === 0){
+    if (validate.length === 0) {
       await Users.bulkCreate(defaultUsers);
     }
   });

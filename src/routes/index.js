@@ -28,18 +28,23 @@ const { postUsers } = require("./Users/routePostAccount");
 const { getActualUser } = require("./Users/getActualUser");
 const { putUser } = require("./Users/putUser");
 
-const { mercadoPagoPost } = require('./mercadoPago/mercadoPago.js');
+const { mercadoPagoPost } = require("./mercadoPago/mercadoPago.js");
 
 /*          Configuracion de rutas:        */
+
+router.get("/", async (req, res, next) => {
+  return res.send("Base de datos conectada");
+});
+
 // USER:
 router.post("/users", postUsers);
 router.get("/users/:email", getActualUser);
 router.put("/users", putUser);
 
 // CART:
-router.get("/carts", getAllCarts)
+router.get("/carts", getAllCarts);
 router.get("/cart", getUserCart);
-router.put("/cart/:CartId", putUserCart); 
+router.put("/cart/:CartId", putUserCart);
 router.delete("/cart/:CartId", deleteUserCart);
 
 // PRODUCT:
@@ -67,9 +72,7 @@ router.put("/categories/:CategoriesId", putCategories);
 // router.get("/orders", getAllOrders);
 // router.put("/order/:OrderId", putOrder);
 
-
 //MERCADOPAGO:
-router.get("/checkout", mercadoPagoPost)
-
+router.get("/checkout", mercadoPagoPost);
 
 module.exports = router;
