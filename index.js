@@ -201,6 +201,7 @@ conn.sync({ force: true }).then(() => {
         name: "",
         admin: true
       },
+
       {
         email: "elecalderon.ec@gmail.com",
         name: "",
@@ -226,6 +227,7 @@ conn.sync({ force: true }).then(() => {
         name: "",
         admin: true
       },
+
     ];
     
     await Users.bulkCreate(defaultUsers);

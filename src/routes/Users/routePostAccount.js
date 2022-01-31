@@ -13,6 +13,7 @@ const postUsers =
         accountCreated.addCart(cartCreate)
       }else if (!validate.active) {
         validate.active = true;
+        if (validate.name === "") validate.name = name;
         await validate.save();
       }
       if (validate.name === ""){
