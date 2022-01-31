@@ -18,7 +18,7 @@ const postUsers =
       }
       if (validate.name === ""){
         validate.name = name;
-        let cartCreate = await Cart.create({productCart: []})
+        let cartCreate = await Cart.create({user:email})
         validate.addCart(cartCreate)
         await validate.save();
       }
