@@ -47,6 +47,11 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true
     },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "Colombia"
+    },
 
   }, {timestamps: false});
 };

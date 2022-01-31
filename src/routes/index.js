@@ -4,7 +4,7 @@ const router = require("express").Router();
 const { getProducts } = require("./products/getProducts");
 const { getProductDetail } = require("./products/getProductDetail");
 const { updateProducts } = require("./products/postProducts");
-const { putProducts } = require("./products/putProducts");
+const { updateProductAdm } = require("./products/putProducts");
 
 const { getPromos } = require("./promos/getPromos");
 const { postPromos } = require("./promos/postPromos");
@@ -15,6 +15,7 @@ const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
 const { putOrder } = require("./Orders/putOrder.js");
 
+const { getAllCarts } = require("./Cart/getAllCarts");
 const { getUserCart } = require("./Cart/getUserCart");
 const { putUserCart } = require("./Cart/putUserCart");
 const { deleteUserCart } = require("./Cart/deleteUserCart");
@@ -36,15 +37,16 @@ router.get("/users/:email", getActualUser);
 router.put("/users", putUser);
 
 // CART:
-router.put("/cart/:UserId", putUserCart);
-router.get("/cart/:UserId", getUserCart);
-router.delete("/cart/:UserId", deleteUserCart);
+router.get("/carts", getAllCarts)
+router.get("/cart", getUserCart);
+router.put("/cart/:CartId", putUserCart); 
+router.delete("/cart/:CartId", deleteUserCart);
 
 // PRODUCT:
 router.get("/products", getProducts);
 router.get("/products/:ProductId", getProductDetail);
 router.post("/products", updateProducts);
-router.put("/products/:ProductId", putProducts);
+router.put("/products", updateProductAdm);
 
 //PROMOS:
 router.get("/promos", getPromos);
