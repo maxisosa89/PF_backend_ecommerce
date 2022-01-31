@@ -26,6 +26,7 @@ const { putCategories } = require("./categories/putCategories");
 
 const { postUsers } = require("./Users/routePostAccount");
 const { getActualUser } = require("./Users/getActualUser");
+const { getUsers } = require("./Users/getUsers");
 const { putUser } = require("./Users/putUser");
 
 const { mercadoPagoPost } = require('./mercadoPago/mercadoPago.js');
@@ -34,6 +35,7 @@ const { mercadoPagoPost } = require('./mercadoPago/mercadoPago.js');
 // USER:
 router.post("/users", postUsers);
 router.get("/users/:email", getActualUser);
+router.get("/users", getUsers);
 router.put("/users", putUser);
 
 // CART:
