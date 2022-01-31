@@ -28,14 +28,23 @@ const {
   Order,
   Reviews,
   Users,
-  Product_categories,
+  Product_categories
 } = require("../PF_backend_ecommerce/src/db");
+
+const port = process.env.PORT || 3001;
+// Syncing all the models at once.
+conn.sync({ force: true }).then(() => {
+  server.listen(port, async () => {
+    console.log("%s listening at port"); // eslint-disable-line no-
+    // let variable = false;
+  });
+});
 
 // let bool = true
 
 // if (bool)
 // bulk
-var images = [
+/* var images = [
   "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/19_4-370x497.jpg",
   "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/16-370x497.jpg",
   "https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/15_4-370x497.jpg",
@@ -108,14 +117,8 @@ var defaultPromos = [
     img: "https://image.freepik.com/foto-gratis/mujer-hermosa-calle_144627-11073.jpg",
     resume: "Compra 5 unidades y multiplicas el precio unitario por 5",
   },
-];
-const port = process.env.PORT || 3001;
-//
-// Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(port, async () => {
-    console.log("%s listening at ", port); // eslint-disable-line no-
-    // let variable = false;
+]; */
+
 
     // await Cart.sync({force:variable});
     // await Categories.sync({force:variable});
@@ -126,7 +129,7 @@ conn.sync({ force: true }).then(() => {
     // await Reviews.sync({force:variable})
     // await Users.sync({force:variable});
     // await Product_categories.sync({force:variable});
-
+/*     
     const data = [
       {
         name: "Women Clothing",
@@ -166,6 +169,7 @@ conn.sync({ force: true }).then(() => {
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
+    
     // allProducts.map(async (el) => {
     //   const findedCategory = await Categories.findOne({
     //     where: {
@@ -193,6 +197,4 @@ conn.sync({ force: true }).then(() => {
         },
       });
       p.addCategories(oneCategory);
-    });
-  });
-});
+    }); */
