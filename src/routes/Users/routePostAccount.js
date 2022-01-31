@@ -15,7 +15,7 @@ const postUsers =
         validate.active = true;
         if (validate.name === "") validate.name = name;
         await validate.save();
-      }
+      }//Comentario
       if (validate.name === ""){
         validate.name = name;
         let cartCreate = await Cart.create({user:email})
