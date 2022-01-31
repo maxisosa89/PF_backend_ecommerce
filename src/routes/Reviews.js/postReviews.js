@@ -3,14 +3,14 @@ const { Product, User, Reviews }=require('../../db');
 const PostReviews = async(req, res, next)=> {
 
     try {   
-        let { id } = req.params;
-        let { userIdUser, score, description,productIdProduct } = req.body;
+        let { ProductId } = req.params;
+        let { UsersId, score, description,productIdProduct } = req.body;
         console.log('req.body :>> ', req.body);
 
         //busco si existe el producto por id
-        let prod = await Product.findByPk(id)
+        let prod = await Product.findByPk(ProductId)
         //busco si existe el usuario por id
-        let use = await User.findByPk(userIdUser)
+        let use = await User.findByPk(UsersId)
         //si no existe enviara un mensaje
         if (!prod) {
             res.status(404).json({
@@ -25,8 +25,8 @@ const PostReviews = async(req, res, next)=> {
         //creo un nuevo review
         let [newReview, created] = await Reviews.findOrCreate({
             where:{
-                productIdProduct:productIdProduct,
-                userIdUser:userIdUser
+                productIdProduct:ProductId,
+                UsersId:UsersId
             },
             defaults:{
                 score:score,

@@ -3,17 +3,17 @@ const {Cart, Users} = require("../../db");
 
 const getUserCart = async (req,res,next)=>{
   try{
-    const {UserId} = req.params;
+    const {UsersId} = req.params;
     //[Busco el usuario
-    let user = await Users.findByPk(UserId);
+    let user = await Users.findByPk(UsersId);
     //[Busco los productos del carrito del usuario
     let cart = await user.getProducts({
-      attributes: ["idProduct","name", "price", "stock","image"]
+      attributes: ["ProductId","name", "price", "stock","image"]
     });
     //[Ordeno los datos para presentarlos de la misma manera que en otras rutas donde uso el carrito
     cart = cart.map(el=>{
-      let {idProduct, name, price, stock,image, cart:{amount}}= el.toJSON();
-      return {idProduct, name, price, stock,image, amount};
+      let {ProductId, name, price, stock,img, cart:{amount}}= el.toJSON();
+      return {ProductId, name, price, stock,img, amount};
     })
     res.status(200).json({user, cart});
   }catch(err){
