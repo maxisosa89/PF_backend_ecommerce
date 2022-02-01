@@ -38,9 +38,9 @@ router.put("/users", putUser);
 
 // CART:
 router.get("/carts", getAllCarts)
-router.get("/cart", getUserCart);
-router.put("/cart/:CartId", putUserCart); 
-router.delete("/cart/:CartId", deleteUserCart);
+router.get("/cart/:email", getUserCart);
+router.put("/cart/:CartId/:ProductId", putUserCart); 
+router.delete("/cart/:CartId/:ProductId", deleteUserCart);
 
 // PRODUCT:
 router.get("/products", getProducts);
