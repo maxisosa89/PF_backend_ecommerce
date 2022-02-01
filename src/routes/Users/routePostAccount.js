@@ -6,7 +6,12 @@ const postUsers =
   async (req, res) => {
     const { name, picture, email } = req.body;
     try {
-      let validate = await Users.findOne({where: {email}})
+      let validate = await Users.findOne({where: {email}, 
+        include: {
+          model: Cart,
+          attributes: ['CartId'],
+          through: { attributes: [] },
+      }})
       if (!validate){
         let accountCreated = await Users.create({name, email, picture});
         let cartCreate = await Cart.create({user:email})
@@ -15,14 +20,13 @@ const postUsers =
         validate.active = true;
         await validate.save();
       }
-      if (validate.name === ""){
+      if (!validate.carts.length){
         validate.name = name;
         validate.picture = picture;
         let cartCreate = await Cart.create({user:email})
         validate.addCart(cartCreate)
         await validate.save();
       }
-
       res.sendStatus(200);
     } catch(err) {
       console.log(err)
