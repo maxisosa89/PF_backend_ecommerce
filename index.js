@@ -114,8 +114,8 @@ const port = process.env.PORT || 3001;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(port, async () => {
-    console.log("%s listening at ", port); // eslint-disable-line no-
+  server.listen(3001, async () => {
+    console.log("%s listening at 3001"); // eslint-disable-line no-
     // let variable = false;
 
     // await Cart.sync({force:variable});
@@ -199,46 +199,69 @@ conn.sync({ force: true }).then(() => {
     var defaultUsers = [
       {
         email: "maxisosa89@gmail.com",
-        name: "",
+        name: "Maxi",
         admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
 
       {
         email: "elecalderon.ec@gmail.com",
-        name: "",
-        admin: true,
+        name: "Eleo",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
         email: "elianh2015@gmail.com",
-        name: "",
-        admin: true,
+        name: "Elian",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
         email: "oiaraque@hotmail.com",
-        name: "",
-        admin: true,
+        name: "Oscar",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
         email: "jonascript.cpu@gmail.com",
-        name: "",
-        admin: true,
+        name: "Jona",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
         email: "ignaciogrillocaimary@gmail.com",
-        name: "",
+        name: "Nacho",
         admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/ogw/ADea4I4DJ5xScae4_3XX-QBkf20nUwbNcD34h4rbxdWd-g=s83-c-mo",
       },
+
       {
         email: "etcheparede@gmail.com",
-        name: "",
-        admin: true,
+        name: "David",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
         email: "nicolasmayorquinduran@gmail.com",
-        name: "",
+        name: "Nicolas",
         admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14Gj1-uJyQS_inNu3IEJZvImBNJNsLY2uW0-ocrm4=s96-c",
       },
     ];
+
     let validate = await Users.findAll();
     if (validate.length === 0) {
       await Users.bulkCreate(defaultUsers);

@@ -26,6 +26,7 @@ const { putCategories } = require("./categories/putCategories");
 
 const { postUsers } = require("./Users/routePostAccount");
 const { getActualUser } = require("./Users/getActualUser");
+const { getUsers } = require("./Users/getUsers");
 const { putUser } = require("./Users/putUser");
 
 const { mercadoPagoPost } = require("./mercadoPago/mercadoPago.js");
@@ -39,6 +40,7 @@ router.get("/", async (req, res, next) => {
 // USER:
 router.post("/users", postUsers);
 router.get("/users/:email", getActualUser);
+router.get("/users", getUsers);
 router.put("/users", putUser);
 
 // CART:
@@ -73,6 +75,6 @@ router.put("/categories/:CategoriesId", putCategories);
 // router.put("/order/:OrderId", putOrder);
 
 //MERCADOPAGO:
-router.get("/checkout", mercadoPagoPost);
+router.post("/checkout", mercadoPagoPost);
 
 module.exports = router;
