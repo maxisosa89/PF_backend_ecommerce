@@ -12,7 +12,7 @@ const getActualUser = ("/", async (req, res) => {
         where: { email },
         include: {
           model: Cart,
-          attributes: ['CartId'],
+          attributes: ['CartId', 'user', 'amount', 'productCart', 'status'],
           through: { attributes: [] },
         }
       }
