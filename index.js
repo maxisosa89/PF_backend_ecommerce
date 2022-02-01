@@ -28,7 +28,7 @@ const {
   Order,
   Reviews,
   Users,
-  Product_categories
+  Product_categories,
 } = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
@@ -111,7 +111,7 @@ var defaultPromos = [
 ];
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
     // let variable = false;
@@ -125,7 +125,7 @@ conn.sync({ force: false }).then(() => {
     // await Reviews.sync({force:variable})
     // await Users.sync({force:variable});
     // await Product_categories.sync({force:variable});
-    
+
     const data = [
       {
         name: "Women Clothing",
@@ -165,7 +165,6 @@ conn.sync({ force: false }).then(() => {
     allProducts = await Product.findAll();
     var allCategories = await Categories.findAll();
 
-    
     // allProducts.map(async (el) => {
     //   const findedCategory = await Categories.findOne({
     //     where: {
@@ -198,51 +197,73 @@ conn.sync({ force: false }).then(() => {
     var defaultUsers = [
       {
         email: "maxisosa89@gmail.com",
-        name: "",
-        admin: true
+        name: "Maxi",
+        admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
 
       {
         email: "elecalderon.ec@gmail.com",
-        name: "",
-        admin: true
-      },
-      {
-        email: "elianh2015@gmail.com",
-        name: "",
-        admin: true
-      },
-      {
-        email: "oiaraque@hotmail.com",
-        name: "",
-        admin: true
-      },
-      {
-        email: "jonascript.cpu@gmail.com",
-        name: "",
-        admin: true
-      },
-      {
-        email: "ignaciogrillocaimary@gmail.com",
-        name: "",
-        admin: true
-      },
-      {
-        email: "etcheparede@gmail.com",
-        name: "",
-        admin: true
-      },
-      {
-        email: "nicolasmayorquinduran@gmail.com",
-        name: "",
-        admin: true
+        name: "Eleo",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
 
+      {
+        email: "elianh2015@gmail.com",
+        name: "Elian",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
+      },
+
+      {
+        email: "oiaraque@hotmail.com",
+        name: "Oscar",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
+      },
+
+      {
+        email: "jonascript.cpu@gmail.com",
+        name: "Jona",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
+      },
+
+      {
+        email: "ignaciogrillocaimary@gmail.com",
+        name: "Nacho",
+        admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/ogw/ADea4I4DJ5xScae4_3XX-QBkf20nUwbNcD34h4rbxdWd-g=s83-c-mo",
+      },
+
+      {
+        email: "etcheparede@gmail.com",
+        name: "David",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
+      },
+
+      {
+        email: "nicolasmayorquinduran@gmail.com",
+        name: "Nicolas",
+        admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14Gj1-uJyQS_inNu3IEJZvImBNJNsLY2uW0-ocrm4=s96-c",
+      },
     ];
+
     let validate = await Users.findAll();
-    if (validate.length === 0){
+
+    if (validate.length === 0) {
       await Users.bulkCreate(defaultUsers);
     }
   });
 });
-
