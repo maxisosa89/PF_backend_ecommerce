@@ -2,8 +2,6 @@ const mercadopago = require("mercadopago");
 const express = require("express");
 const app = express();
 
-const router = require("express").Router();
-
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,7 +27,7 @@ const mercadoPagoPost = async (req, res) => {
     .then(function (response) {
       // res.redirect(response.body.init_point)
       // console.log(response.body)
-      res.send(response.body);
+      res.send(response.body.init_point);
     })
     .catch(function (err) {
       console.log(err);
