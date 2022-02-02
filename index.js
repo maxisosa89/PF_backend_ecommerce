@@ -29,7 +29,7 @@ const {
   Reviews,
   Users,
   Product_categories,
-} = require('../PF_backend_ecommerce/src/db')
+} = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
 
@@ -197,50 +197,74 @@ conn.sync({ force: false }).then(() => {
 
     var defaultUsers = [
       {
-        email: 'maxisosa89@gmail.com',
-        name: '',
+        email: "maxisosa89@gmail.com",
+        name: "Maxi",
         admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
 
       {
-        email: 'elecalderon.ec@gmail.com',
-        name: '',
-        admin: true,
+        email: "elecalderon.ec@gmail.com",
+        name: "Eleo",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
-        email: 'elianh2015@gmail.com',
-        name: '',
-        admin: true,
+        email: "elianh2015@gmail.com",
+        name: "",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
-        email: 'oiaraque@hotmail.com',
-        name: '',
-        admin: true,
+        email: "oiaraque@hotmail.com",
+        name: "Oscar",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
-        email: 'jonascript.cpu@gmail.com',
-        name: '',
-        admin: true,
+        email: "jonascript.cpu@gmail.com",
+        name: "Jona",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
-        email: 'ignaciogrillocaimary@gmail.com',
-        name: '',
+        email: "ignaciogrillocaimary@gmail.com",
+        name: "Nacho",
         admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/ogw/ADea4I4DJ5xScae4_3XX-QBkf20nUwbNcD34h4rbxdWd-g=s83-c-mo",
       },
+
       {
-        email: 'etcheparede@gmail.com',
-        name: '',
-        admin: true,
+        email: "etcheparede@gmail.com",
+        name: "David",
+        admin: false,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
       },
+
       {
-        email: 'nicolasmayorquinduran@gmail.com',
-        name: '',
+        email: "nicolasmayorquinduran@gmail.com",
+        name: "Nicolas",
         admin: true,
+        picture:
+          "https://lh3.googleusercontent.com/a-/AOh14Gj1-uJyQS_inNu3IEJZvImBNJNsLY2uW0-ocrm4=s96-c",
       },
-    ]
-    let validate = await Users.findAll()
+    ];
+
+    let validate = await Users.findAll();
+
     if (validate.length === 0) {
-      await Users.bulkCreate(defaultUsers)
+      await Users.bulkCreate(defaultUsers);
     }
-  })
-})
+  });
+});
