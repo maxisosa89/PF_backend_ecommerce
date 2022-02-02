@@ -26,8 +26,8 @@ module.exports = (sequelize) => {
         defaultValue:[]
       },
       status:{
-        type:DataTypes.ENUM("created","paid","dispatched"),
-        defaultValue:"created",
+        type:DataTypes.ENUM("open","closed"),
+        defaultValue:"open",
         allowNull:false
       }
     },

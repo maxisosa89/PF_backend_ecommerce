@@ -17,8 +17,8 @@ module.exports = (sequelize) => {
 
     qty:{
       type: DataTypes.INTEGER,
-      allowNull:true,
-      defaultValue:1
+      allowNull: true,
+      defaultValue: 1
     },
 
     img: {

@@ -4,13 +4,12 @@ const { Product, Categories } = require('../../db.js');
 const updateProductAdm = async (req, res, next) => {
     
     const { name, ProductId, img, price, description, additionalInformation, stock, categories } = req.body;
-
     
     try {
             
         let categoryUpdate = await Categories.findOne(
             {
-                where: { categories: categories[0].name },
+                where: { name: categories[0].name },
             }
         );
 

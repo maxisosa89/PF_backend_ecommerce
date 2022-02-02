@@ -215,7 +215,7 @@ conn.sync({ force: true }).then(() => {
 
       {
         email: "elianh2015@gmail.com",
-        name: "Elian",
+        name: "",
         admin: false,
         picture:
           "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
