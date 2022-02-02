@@ -3,8 +3,7 @@ const {Cart, Users, Product} = require("../../db");
 
 const putUserCart = async (req,res,next)=>{
   try{
-    const { CartId } = req.params;
-    const { ProductId } = req.body;
+    const { CartId,ProductId } = req.params;
     let cart = await Cart.findOne({where:{CartId}});
     let product = await Product.findOne({where:{ProductId}})
     let carrito = cart.productCart
