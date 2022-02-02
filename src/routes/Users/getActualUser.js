@@ -4,7 +4,7 @@ const { Users, Cart } = require("../../db");
 const getActualUser = ("/", async (req, res) => {
   
   const { email } = req.params;
-    
+  //getUser
   try {
     
     let actualUser = await Users.findOne(
