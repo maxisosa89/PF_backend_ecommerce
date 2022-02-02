@@ -18,18 +18,18 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
-const { conn } = require("./src/db.js");
-const {
-  Product,
-  Cart,
-  Categories,
-  Promos,
-  Details,
-  Order,
-  Reviews,
-  Users,
-  Product_categories,
-} = require("../PF_backend_ecommerce/src/db");
+// const { conn } = require("./src/db.js");
+// const {
+//   Product,
+//   Cart,
+//   Categories,
+//   Promos,
+//   Details,
+//   Order,
+//   Reviews,
+//   Users,
+//   Product_categories,
+// } = require("../PF_backend_ecommerce/src/db");
 
 // let bool = true
 
