@@ -1,10 +1,10 @@
 const {Cart, Users, Product} = require("../../db");
 const deleteUserCart = async(req,res,next)=>{
   try{
-    const { CartId } = req.params;
-    const { ProductId }  = req.body;
+    const { CartId,ProductId } = req.params;
+    
+    let cart = await Cart.findOne({where:{CartId}});
     if(!ProductId){
-      let cart = await Cart.findOne({where:{CartId}});
       let allCart={
         productCart: []
       }
