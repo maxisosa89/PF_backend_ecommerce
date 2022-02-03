@@ -29,7 +29,7 @@ const {
   Reviews,
   Users,
   Product_categories,
-} = require("../PF_backend_ecommerce/src/db");
+} = require("./src/db");
 
 // let bool = true
 
@@ -111,10 +111,17 @@ var defaultPromos = [
   },
 ]
 
+const port = process.env.PORT || "3001"
+
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
+<<<<<<< HEAD
   server.listen(3001, async () => {
     console.log('%s listening at 3001') // eslint-disable-line no-
+=======
+  server.listen(port, async () => {
+    console.log("%s listening at 3001"); // eslint-disable-line no-
+>>>>>>> 8fa4588cf2c068d1940e1f470987f74935b8949b
     // let variable = false;
 
     // await Cart.sync({force:variable});

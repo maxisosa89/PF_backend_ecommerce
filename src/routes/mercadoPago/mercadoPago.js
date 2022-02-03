@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 mercadopago.configure({
+  
   access_token:
     "TEST-4990834846951605-012518-58602750113b1537666f2e7b874ed678-194085383",
 });
