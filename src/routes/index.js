@@ -41,7 +41,7 @@ router.put("/users", putUser);
 // CART:
 router.get("/carts", getAllCarts)
 router.get("/cart/:email", getUserCart);
-router.put("/cart/:CartId/:ProductId", putUserCart); 
+router.put("/cart/:CartId", putUserCart); 
 router.delete("/cart/:CartId", deleteUserCart);
 
 // PRODUCT:
