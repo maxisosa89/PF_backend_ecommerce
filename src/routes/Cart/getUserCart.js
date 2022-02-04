@@ -8,7 +8,7 @@ const getUserCart = async (req,res,next)=>{
     let cart = await Cart.findOne({
       where:{
         user:email,
-        status: "created"
+        status: "open"
       }
     })
 
