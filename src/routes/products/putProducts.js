@@ -6,13 +6,23 @@ const updateProductAdm = async (req, res, next) => {
     const { name, ProductId, img, price, description, additionalInformation, stock, categories } = req.body;
     
     try {
-            
-        let categoryUpdate = await Categories.findOne(
-            {
-                where: { name: categories[0].name },
-            }
-        );
 
+        categories.map(async (category) => {
+            
+            let categoryUpdate = await Categories.findOne(
+                {
+                    where: { 
+                        name: category,
+                        active: false
+                    },
+                }
+            );
+
+            categoryUpdate.active = true;
+        
+            await categoryUpdate.save();
+        });
+            
 
         let productUpdate = await Product.findOne(
             { 
@@ -20,7 +30,7 @@ const updateProductAdm = async (req, res, next) => {
             }
         );
 
-        console.log(productUpdate)
+        // console.log(productUpdate)
         
         productUpdate.name = name
         productUpdate.img = img
@@ -28,12 +38,12 @@ const updateProductAdm = async (req, res, next) => {
         productUpdate.description = description
         productUpdate.additionalInformation = additionalInformation
         productUpdate.stock = stock
-        productUpdate.categories = categoryUpdate
+        
         
         
         await productUpdate.save()
 
-        res.json("¡Actualizado!")
+        res.json(productUpdate)
 
     } catch (error) {
         next(error);
