@@ -12,7 +12,7 @@ const getProductDetail = async (req, res, next) => {
         include: [
           {
             model: Categories,
-            attributes: ["name"], // se relacionan las actividades de cada país
+            attributes: ["name"],
             through: { attributes: [] },
           },
         ],
