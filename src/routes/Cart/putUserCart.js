@@ -4,10 +4,10 @@ const {Cart, Users, Product} = require("../../db");
 const putUserCart = async (req, res, next) => {
   try {
     const {CartId} = req.params;
-    console.log(CartId)
     const ProductInfo = req.body
-    console.log(ProductInfo)
-    let Product = JSON.parse(ProductInfo)
+    console.log( ProductInfo)
+    console.log( ProductInfo[0])
+    let ProductId = ProductInfo.ProductId
 
     let cart = await Cart.findOne({
       where: {
@@ -39,5 +39,4 @@ const putUserCart = async (req, res, next) => {
 };
 
 module.exports = {putUserCart};
-
 
