@@ -268,5 +268,6 @@ conn.sync({ force: false }).then(() => {
     if (validate.length === 0) {
       await Users.bulkCreate(defaultUsers);
     }
+    
   });
 });
