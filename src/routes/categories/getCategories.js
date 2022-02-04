@@ -1,10 +1,19 @@
-const router = require("express").Router();
 const { Categories } = require("../../db.js");
 
-const getCategories = async (req, res) => {
-  let cat = await Categories.findAll();
+
+const getCategories = async (req, res, next) => {
   
-  res.json(cat);
+  try {
+
+    let cat = await Categories.findAll();
+    
+    res.json(cat);
+
+  } catch (error) {
+    next(error)
+  }
+
 };
+
 
 module.exports = { getCategories };
