@@ -17,8 +17,23 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<<<<<<< HEAD
 const server = require('./src/app.js')
 const { conn } = require('./src/db.js')
+=======
+const {
+  prueba,
+  camisetas,
+  vestidos,
+  pantalones,
+  defaultPromos,
+  defaultUsers,
+  categorias,
+  blusas,
+} = require("./bulkCreate");
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
+>>>>>>> effededdc84367eacc6ab5e9b357e860f30e30b6
 const {
   Product,
   Cart,
@@ -35,6 +50,7 @@ const {
 
 // if (bool)
 // bulk
+<<<<<<< HEAD
 var images = [
   'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/19_4-370x497.jpg',
   'https://ld-wp.template-help.com/woocommerce_59038/wp-content/uploads/2016/06/16-370x497.jpg',
@@ -112,13 +128,17 @@ var defaultPromos = [
 ]
 
 const port = process.env.PORT || "3001"
+=======
+
+const port = process.env.PORT || "3001";
+>>>>>>> effededdc84367eacc6ab5e9b357e860f30e30b6
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(port, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
-    // let variable = false;
 
+<<<<<<< HEAD
     // await Cart.sync({force:variable});
     // await Categories.sync({force:variable});
     // await Details.sync({force:variable});
@@ -262,13 +282,69 @@ conn.sync({ force: false }).then(() => {
           "https://lh3.googleusercontent.com/a-/AOh14Gj1-uJyQS_inNu3IEJZvImBNJNsLY2uW0-ocrm4=s96-c",
       },
     ];
+=======
+    var allCategories = await Categories.findAll();
+    allCategories && (await Categories.bulkCreate(categorias));
+
+    const allPromos = Promos.findAll();
+    !allPromos.length && (await Promos.bulkCreate(defaultPromos));
+>>>>>>> effededdc84367eacc6ab5e9b357e860f30e30b6
 
     let validate = await Users.findAll();
+    validate && (await Users.bulkCreate(defaultUsers));
 
+<<<<<<< HEAD
     if (validate.length === 0) {
       await Users.bulkCreate(defaultUsers);
     }
     
     
+=======
+    // blusas, camisetas, vestidos, pantalones,
+    var bulkBlusas = await Product.bulkCreate(blusas);
+    var bulkVestidos = await Product.bulkCreate(vestidos);
+    var bulkPantalones = await Product.bulkCreate(pantalones);
+    var bulkCamisetas = await Product.bulkCreate(camisetas);
+
+    bulkBlusas.length;
+    bulkBlusas.map(async (el) => {
+      const category = await Categories.findOne({
+        where: {
+          name: "Blusas",
+        },
+      });
+      el.addCategories(category);
+    });
+
+    bulkVestidos.length &&
+      bulkVestidos.map(async (el) => {
+        const category = await Categories.findOne({
+          where: {
+            name: "Vestidos",
+          },
+        });
+        el.addCategories(category);
+      });
+
+    bulkCamisetas.length &&
+      bulkCamisetas.map(async (el) => {
+        const category = await Categories.findOne({
+          where: {
+            name: "Camisetas",
+          },
+        });
+        el.addCategories(category);
+      });
+
+    bulkPantalones.length &&
+      bulkPantalones.map(async (el) => {
+        const category = await Categories.findOne({
+          where: {
+            name: "Pantalones",
+          },
+        });
+        el.addCategories(category);
+      });
+>>>>>>> effededdc84367eacc6ab5e9b357e860f30e30b6
   });
 });
