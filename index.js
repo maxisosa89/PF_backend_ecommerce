@@ -269,5 +269,6 @@ conn.sync({ force: false }).then(() => {
       await Users.bulkCreate(defaultUsers);
     }
     
+    
   });
 });
