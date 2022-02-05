@@ -4,23 +4,34 @@ const { Product, Categories } = require('../../db.js');
 const updateProductAdm = async (req, res, next) => {
     
     const { name, ProductId, img, price, description, additionalInformation, stock, categories } = req.body;
+
+    let category = categories[0];
     
     try {
-            
-        let categoryUpdate = await Categories.findOne(
-            {
-                where: { name: categories[0].name },
-            }
-        );
-
 
         let productUpdate = await Product.findOne(
             { 
-                where: { ProductId }
+                where: { ProductId },
+                include: { 
+                    model: Categories,
+                    attributes: ["CategoriesId"],
+                    through: {
+                        attributes: []
+                    }
+                }
+            }
+        );
+        
+
+        const addCategoryById = await Categories.findOne(
+            {
+                where: { name: category }
             }
         );
 
-        console.log(productUpdate)
+        // ELIMINAR RELACIONES:
+        productUpdate.removeCategories(productUpdate.categories[0].CategoriesId);
+
         
         productUpdate.name = name
         productUpdate.img = img
@@ -28,12 +39,12 @@ const updateProductAdm = async (req, res, next) => {
         productUpdate.description = description
         productUpdate.additionalInformation = additionalInformation
         productUpdate.stock = stock
-        productUpdate.categories = categoryUpdate
+        productUpdate.addCategories(addCategoryById)
         
         
         await productUpdate.save()
-
-        res.json("¡Actualizado!")
+ 
+        res.json(productUpdate)
 
     } catch (error) {
         next(error);
