@@ -12,16 +12,20 @@ mercadopago.configure({
 });
 
 const mercadoPagoPost = async (req, res) => {
-  const { title, unit_price, quantity } = req.body;
   let preference = {
-    items: [
-      {
-        title: title,
-        unit_price: Number(unit_price),
-        quantity: Number(quantity),
-      },
-    ],
+    items: req.body.map((el) => {
+      return {
+        title: el.name,
+        unit_price: Number(el.price),
+        quantity: Number(el.qty),
+      };
+    }),
   };
+
+  //axios.post("http://localhost:3001/checkout",
+  // cart.productcard.map(el =>
+  // {title:el.name, unit_price:Number(el.price), Number(quantity:el.qty) })
+  //)
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
