@@ -42,7 +42,7 @@ router.put("/users", putUser);
 router.get("/carts", getAllCarts)
 router.get("/cart/:email", getUserCart);
 router.put("/cart/:CartId", putUserCart); 
-router.delete("/cart/:CartId", deleteUserCart);
+router.delete("/cart/:CartId/:ProductId", deleteUserCart);
 
 // PRODUCT:
 router.get("/products", getProducts);
