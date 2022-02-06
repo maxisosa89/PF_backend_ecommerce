@@ -21,7 +21,7 @@ const {
   prueba,
   camisetas,
   vestidos,
-  pants,
+  pantalones,
   defaultPromos,
   defaultUsers,
   categorias,
@@ -62,10 +62,10 @@ conn.sync({ force: true }).then(() => {
     let validate = await Users.findAll();
     validate && (await Users.bulkCreate(defaultUsers));
 
-    // blusas, camisetas, vestidos, pants,
+    // blusas, camisetas, vestidos, pantalones,
     var bulkBlusas = await Product.bulkCreate(blusas);
     var bulkVestidos = await Product.bulkCreate(vestidos);
-    var bulkPants = await Product.bulkCreate(pants);
+    var bulkPantalones = await Product.bulkCreate(pantalones);
     var bulkCamisetas = await Product.bulkCreate(camisetas);
 
     bulkBlusas.length;
@@ -98,11 +98,11 @@ conn.sync({ force: true }).then(() => {
         el.addCategories(category);
       });
 
-    bulkPants.length &&
-      bulkPants.map(async (el) => {
+    bulkPantalones.length &&
+      bulkPantalones.map(async (el) => {
         const category = await Categories.findOne({
           where: {
-            name: "Pants",
+            name: "Pantalones",
           },
         });
         el.addCategories(category);

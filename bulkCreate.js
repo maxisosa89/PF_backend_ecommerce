@@ -23,7 +23,7 @@ const categorias = [
   },
 ];
 
-const pants = [
+const pantalones = [
   {
     name: "Jean Array Lady",
     img: [
@@ -694,7 +694,7 @@ module.exports = {
   vestidos,
   camisetas,
   blusas,
-  pants,
+  pantalones,
   categorias,
   defaultUsers,
   defaultPromos,
