@@ -67,10 +67,16 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { Users, Product, Cart, Order, Details, Categories, Promos } =
+const { Users, Product, Cart, Order, Details, Categories, Promos, Reviews } =
   sequelize.models;
 
 // Aca vendrian las relaciones
+
+// Un producto tiene varias reviews
+// pero cada review pertenece a un único producto
+
+Product.hasMany(Reviews);
+Reviews.belongsTo(Product);
 
 //Muchos productos pueden estar en una misma orden y distintas ordenes pueden tener a los mismos productos
 Product.belongsToMany(Categories, { through: "Product_categories" }); //orders

@@ -29,9 +29,21 @@ const { getActualUser } = require("./Users/getActualUser");
 const { getUsers } = require("./Users/getUsers");
 const { putUser } = require("./Users/putUser");
 
+const { GetReviews } = require("./Reviews/getReviews");
+const { PostReviews } = require("./Reviews/postReviews");
+const { PutReviews } = require("./Reviews/putReviews");
+const { DeleteReviews } = require("./Reviews/deleteReviews");
+
 const { mercadoPagoPost } = require("./mercadoPago/mercadoPago.js");
 
 /*          Configuracion de rutas:        */
+
+// Reviews:
+router.get("/reviews/:productProductId", GetReviews);
+router.post("/reviews", PostReviews);
+router.put("/reviews", PutReviews);
+router.put("/reviews/:ReviewId", DeleteReviews);
+
 // USER:
 router.post("/users", postUsers);
 router.get("/users/:email", getActualUser);
@@ -39,9 +51,9 @@ router.get("/users", getUsers);
 router.put("/users", putUser);
 
 // CART:
-router.get("/carts", getAllCarts)
+router.get("/carts", getAllCarts);
 router.get("/cart/:email", getUserCart);
-router.put("/cart/:CartId", putUserCart); 
+router.put("/cart/:CartId", putUserCart);
 router.delete("/cart/:CartId", deleteUserCart);
 
 // PRODUCT:
