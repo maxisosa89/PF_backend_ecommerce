@@ -107,5 +107,14 @@ conn.sync({ force: true }).then(() => {
         });
         el.addCategories(category);
       });
+
+    const allProducts = await Product.findAll();
+    allProducts.map(async (p, index) => {
+      await Reviews.create({
+        productProductId: p.ProductId,
+        score: (index < 4 && 1) || (index < 8 && 3) || (index < 16 && 4) || 5,
+        description: "Me encanta el diseño",
+      });
+    });
   });
 });
