@@ -9,11 +9,14 @@ const postUserOrder = async (req, res, next) => {
   const {CartId} = req.params;
   const {infoBuy,infoUser}=req.body;
   try {
+    if (!infoUser) {
+      return console.log("no llega la informacion del usuarioo")
+    }
     //-----------------------------------------------------------------------------
     // busco el carrito a modificar
     let actualCart = Cart.findOne({where:{CartId}})
     //creo la info para actualizar el carrito
-    let updateInfo = {
+    let updateInfo = { 
       //añado posibles cambios en los stocks
       productCart:infoBuy.productCart,
       // le cambio el estado a "paid"
