@@ -21,6 +21,8 @@ const putCategories = async (req, res,next) => {
     : res.send("No se ha podido actualizar la categoria");
   
   } catch (error) {
+
+    
     next(error);
   }
 
