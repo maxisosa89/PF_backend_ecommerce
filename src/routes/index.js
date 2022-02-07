@@ -75,7 +75,7 @@ router.put("/categories/:CategoriesId", putCategories);
 // ORDER:
 // router.get("/orders/:UserId", getUserOrders);
 // router.get("/orders/:UserId/:OrderId", getUserOrders);
-// router.post("/order/:UserId", postUserOrder);
+router.post("/order/:CartId", postUserOrder);
 
 // //ORDER ADMIN:
 // router.get("/orders", getAllOrders);
