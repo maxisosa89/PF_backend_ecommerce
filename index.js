@@ -59,7 +59,7 @@ conn.sync({ force: true }).then(() => {
     const allPromos = Promos.findAll();
     !allPromos.length && (await Promos.bulkCreate(defaultPromos));
 
-    let validate = await Users.findAll();
+    let validate = await Users.findAll(); 
     validate && (await Users.bulkCreate(defaultUsers));
 
     // blusas, camisetas, vestidos, pantalones,
