@@ -9,6 +9,7 @@ const postUserOrder = async (req, res, next) => {
   const {CartId} = req.params;
   const {infoBuy,infoUser}=req.body;
   try {
+    console.log(infoBuy,"------",infoUser)
     if (!infoUser) {
       return console.log("no llega la informacion del usuarioo")
     }
