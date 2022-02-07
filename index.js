@@ -49,20 +49,22 @@ const {
 const port = process.env.PORT || "3001";
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(port, async () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-
 
     var allCategories = await Categories.findAll();
-    allCategories && (await Categories.bulkCreate(categorias));
+    allCategories.length === 0 && (await Categories.bulkCreate(categorias.map(e=>e)));
 
     const allPromos = Promos.findAll();
-    !allPromos.length && (await Promos.bulkCreate(defaultPromos));
+    allPromos.length === 0 && (await Promos.bulkCreate(defaultPromos.map(e=>e)));
 
     let validate = await Users.findAll(); 
-    validate && (await Users.bulkCreate(defaultUsers));
+    validate.length === 0 && (await Users.bulkCreate(defaultUsers.map(e=>e)));
 
     // blusas, camisetas, vestidos, pantalones,
+    let variable = await Product.findAll()
+    if(variable.length === 0){
     var bulkBlusas = await Product.bulkCreate(blusas);
     var bulkVestidos = await Product.bulkCreate(vestidos);
     var bulkPantalones = await Product.bulkCreate(pantalones);
@@ -116,5 +118,6 @@ conn.sync({ force: true }).then(() => {
         description: "Me encanta el diseño",
       });
     });
+    }
   });
 });
