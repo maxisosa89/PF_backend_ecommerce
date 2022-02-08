@@ -33,7 +33,7 @@ const putUserCart = async (req, res, next) => {
       return res.send(await cart.update(infoUpdateCart));
     } else if (Status && !ProductInfo) {
       let cart = await Cart.findOne({
-        where: {
+        where: { 
           CartId
         }
       });
