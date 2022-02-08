@@ -57,7 +57,7 @@ conn.sync({ force: false }).then(() => {
     allCategories.length === 0 &&
       (await Categories.bulkCreate(categorias.map((e) => e)));
 
-    const allPromos = Promos.findAll();
+    const allPromos = await Promos.findAll();
     allPromos.length === 0 &&
       (await Promos.bulkCreate(defaultPromos.map((e) => e)));
 
