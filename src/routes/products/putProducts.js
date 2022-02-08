@@ -3,7 +3,7 @@ const { Product, Categories } = require('../../db.js');
 
 const updateProductAdm = async (req, res, next) => {
     
-    const { name, ProductId, img, price, description, additionalInformation, stock, categories } = req.body;
+    const { name, ProductId, img, price, description, additionalInformation, stock, categories, del } = req.body;
 
     
     try {
@@ -58,7 +58,11 @@ const updateProductAdm = async (req, res, next) => {
         productUpdate.additionalInformation = additionalInformation
         productUpdate.stock = stock
         /* productUpdate.addCategories(addCategoryById) */
-        
+        if (del) {
+            productUpdate.active = false
+        }else {
+            productUpdate.active = true
+        }
         
         await productUpdate.save()
  
