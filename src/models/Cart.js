@@ -29,6 +29,10 @@ module.exports = (sequelize) => {
         type:DataTypes.ENUM("open","paid","dispatched"),
         defaultValue:"open",
         allowNull:false
+      },
+      userInfo:{
+        type:DataTypes.JSON(),
+        allowNull:true
       }
     },
     { timestamps: false }
