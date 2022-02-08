@@ -1,10 +1,10 @@
 const { Users, Cart } = require("../../db");
 
 
-const getActualUser = ("/", async (req, res) => {
+const getActualUser = ("/", async (req, res, next) => {
   
   const { email } = req.params;
-  //getUser
+  // getUser:
   try {
     
     let actualUser = await Users.findOne(
@@ -21,9 +21,8 @@ const getActualUser = ("/", async (req, res) => {
     res.status(200).json(actualUser);
     
   } catch (error) {
-    console.log(error)
-  
-  }
+    next(error);
+  } 
    
 });
 
