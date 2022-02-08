@@ -1,4 +1,7 @@
+const nodemailer = require("nodemailer");
 const { Cart, Users, Product } = require("../../db");
+
+
 // const Stripe = require("stripe");
 // require('dotenv').config();
 // const { STRIPE_CONN } = process.env;
@@ -57,7 +60,48 @@ const postUserOrder = async (req, res, next) => {
   }
 };
 
+//---------------------------------------------------------------
+const sendemail = async ()=> {
+
+  const {name, email, message} = req.body;
+  
+  contentHTML = `
+    <h1> User Information </h1>
+    <p>${message}</p>
+  `;
+
+let transporter = nodemailer.createTransport({
+  host: "smtp.mailtrap.io",
+  port: 587,
+  secure: false, // true for 465, false for other ports
+  auth: {
+    user: "1a16fd513d2671", // generated ethereal user
+    pass: "db2e2620bd7ef2", // generated ethereal password
+  },
+});
+
+// send mail with defined transport object
+//let info = await transporter.sendMail({
+  let info = await transporter.sendMail({
+  from: '"Fred Foo 👻" <foo@example.com>', // sender address
+  to: "bar@example.com, baz@example.com", // list of receivers
+  subject: "Hello ✔", // Subject line
+  text: "Hello world?", // plain text body
+  html: contentHTML, // html body
+})
+
+console.log('Message sent: %s', info.messageId);
+
+console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+res.redirect('/success.html');
+
+
+
+}
+
 
 module.exports = {
-  postUserOrder
+  postUserOrder,
+  sendemail
 };

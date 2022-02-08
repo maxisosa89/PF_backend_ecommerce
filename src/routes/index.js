@@ -14,6 +14,7 @@ const { getAllOrders } = require("./Orders/getAllOrders.js");
 const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
 const { putOrder } = require("./Orders/putOrder.js");
+const { sendemail } = require("./Orders/postUserOrder.js");
 
 const { getAllCarts } = require("./Cart/getAllCarts");
 const { getUserCart } = require("./Cart/getUserCart");
@@ -76,6 +77,7 @@ router.put("/categories/:CategoriesId", putCategories);
 // router.get("/orders/:UserId", getUserOrders);
 // router.get("/orders/:UserId/:OrderId", getUserOrders);
 router.post("/order/:CartId", postUserOrder);
+router.post("/order/sendemail", sendemail);
 
 // //ORDER ADMIN:
 // router.get("/orders", getAllOrders);
