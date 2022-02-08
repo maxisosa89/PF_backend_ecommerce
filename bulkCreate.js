@@ -610,7 +610,7 @@ const defaultUsers = [
   {
     email: "maxisosa89@gmail.com",
     name: "Maxi",
-    admin: true,
+    admin: false,
     picture:
       "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
   },
@@ -625,7 +625,7 @@ const defaultUsers = [
 
   {
     email: "elianh2015@gmail.com",
-    name: "",
+    name: "Elian",
     admin: false,
     picture:
       "https://lh3.googleusercontent.com/a-/AOh14GhqL0lyCMwVFpA03QxqhzxmMp1fIDXSX7beyb64=s70-p-k-rw-no",
@@ -666,7 +666,7 @@ const defaultUsers = [
   {
     email: "nicolasmayorquinduran@gmail.com",
     name: "Nicolas",
-    admin: true,
+    admin: false,
     picture:
       "https://lh3.googleusercontent.com/a-/AOh14Gj1-uJyQS_inNu3IEJZvImBNJNsLY2uW0-ocrm4=s96-c",
   },
