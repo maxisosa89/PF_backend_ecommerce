@@ -17,6 +17,7 @@ const postUserOrder = async (req, res, next) => {
     infoBuy,
     infoUser
   } = req.body;
+  console.log(infoBuy)
   try {
     // console.log(infoBuy,"------",infoUser)
     // if (!infoUser) {
@@ -67,12 +68,12 @@ let email = infoUser.email
 
     //-----------------------------------------------------------------------------
     // gaurdo los productos comprados
-    const buyProducts = infoBuy.productCart
+    const buyProducts = infoBuy
     
     // hago un for para iterar sobre cada producto
     for (let i = 0; i < buyProducts.length; i++) {
       let id = buyProducts[i].ProductId
-      let buyUnits = buyProducts[i].stock
+      let buyUnits = buyProducts[i].stockSelected
       console.log(buyUnits)
       // guardo el producto que quiero actualizar
       let updatedProduct = await Product.findOne({where:{ProductId:id}})
