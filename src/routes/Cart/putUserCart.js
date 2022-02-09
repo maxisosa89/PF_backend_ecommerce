@@ -5,13 +5,10 @@ const putUserCart = async (req, res, next) => {
   const ProductInfo = req.body;
   if (Array.isArray(ProductInfo)) {
     try {
-      const actualiceCart = Cart.findByPk(CartId);
-      actualiceCart.productCart = ProductInfo.map((producto) => {
-        producto.stock = producto.stockSelected;
-        return producto;
-      });
+      const actualiceCart = await Cart.findByPk(CartId);
+      actualiceCart.productCart = ProductInfo;
       await actualiceCart.save();
-      console.log(actualiceCart);
+      res.json(console.log("cart edited"));
     } catch (error) {
       res.send(error);
     }
