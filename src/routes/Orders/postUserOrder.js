@@ -17,6 +17,7 @@ const postUserOrder = async (req, res, next) => {
     infoBuy,
     infoUser
   } = req.body;
+  console.log(infoBuy)
   try {
     // console.log(infoBuy,"------",infoUser)
     // if (!infoUser) {
@@ -66,27 +67,31 @@ let email = infoUser.email
     
 
     //-----------------------------------------------------------------------------
-    // // gaurdo los productos comprados
-    // const buyProducts = infoBuy.productCart
-    // // hago un for para iterar sobre cada producto
-    // for (let i = 0; i < newStock.length; i++) {
-    //   let id = buyProducts[i].ProductId
-    //   let buyUnits = buyProducts[i].stock
-    //   // guardo el producto que quiero actualizar
-    //   let updatedProduct = Product.findOne({where:{id}})
-    //   // le resto lo que compre al stock del producto
-    //   let updateStock = { 
-    //     stock: {
-    //       xs:Number(updatedProduct.stock.xs) - Number(buyUnits.xs),
-    //       s:Number(updatedProduct.stock.s) - Number(buyUnits.s),
-    //       m:Number(updatedProduct.stock.m) - Number(buyUnits.m),
-    //       l:Number(updatedProduct.stock.l) - Number(buyUnits.l),
-    //       xl:Number(updatedProduct.stock.xl) - Number(buyUnits.xxl),
-    //     }
-    //   }
-    //   // actualizo el producto con el stock restado
-    //   updatedProduct.update(updateStock)
-    // }
+    // gaurdo los productos comprados
+    const buyProducts = infoBuy
+    
+    // hago un for para iterar sobre cada producto
+    for (let i = 0; i < buyProducts.length; i++) {
+      let id = buyProducts[i].ProductId
+      let buyUnits = buyProducts[i].stockSelected
+      console.log(buyUnits)
+      // guardo el producto que quiero actualizar
+      let updatedProduct = await Product.findOne({where:{ProductId:id}})
+      // console.log(updatedProduct)
+      // le resto lo que compre al stock del producto
+      console.log(updatedProduct.stock)
+      let updateStock = { 
+        stock: {
+          xs:Number(updatedProduct.stock.xs) - Number(buyUnits.xs),
+          s:Number(updatedProduct.stock.s) - Number(buyUnits.s),
+          m:Number(updatedProduct.stock.m) - Number(buyUnits.m),
+          l:Number(updatedProduct.stock.l) - Number(buyUnits.l),
+          xl:Number(updatedProduct.stock.xl) - Number(buyUnits.xxl),
+        }
+      }
+      // actualizo el producto con el stock restado
+      updatedProduct.update(updateStock)
+    }
     return res.status(200).send(validate)
   } catch (error) {
     next(error)
