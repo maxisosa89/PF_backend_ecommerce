@@ -4,7 +4,7 @@ const putUser = async (req, res) => {
   
   const { email, name, country, address, cp, state, del, inactiveUser, activeUser, activeAdmin, inactiveAdmin } = req.body;
   
-
+  console.log(name)
   try {
     
     console.log(req.body)
