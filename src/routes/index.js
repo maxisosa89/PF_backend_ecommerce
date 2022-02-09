@@ -13,7 +13,7 @@ const { putPromos } = require("./promos/putPromos");
 const { getAllOrders } = require("./Orders/getAllOrders.js");
 const { getUserOrders } = require("./Orders/getUserOrders.js");
 const { postUserOrder } = require("./Orders/postUserOrder");
-const { putOrder } = require("./Orders/putOrder.js");
+const { UpdateCardAdmin } = require("./Orders/putOrder.js");
 
 const { getAllCarts } = require("./Cart/getAllCarts");
 const { getUserCart } = require("./Cart/getUserCart");
@@ -79,7 +79,7 @@ router.post("/order/:CartId", postUserOrder);
 
 // //ORDER ADMIN:
 // router.get("/orders", getAllOrders);
-// router.put("/order/:OrderId", putOrder);
+router.put("/order", UpdateCardAdmin);
 
 //MERCADOPAGO:
 router.post("/checkout", mercadoPagoPost);
