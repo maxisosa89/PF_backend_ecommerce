@@ -11,9 +11,9 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: UUIDV4,
       },
-      user:{
-        type:DataTypes.STRING,
-        allowNull:true
+      user: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       amount: {
         type: DataTypes.INTEGER,
@@ -23,13 +23,17 @@ module.exports = (sequelize) => {
       productCart: {
         type: DataTypes.JSON(),
         allowNull: false,
-        defaultValue:[]
+        defaultValue: [],
       },
-      status:{
-        type:DataTypes.ENUM("open","paid","dispatched"),
-        defaultValue:"open",
-        allowNull:false
-      }
+      status: {
+        type: DataTypes.ENUM("open", "paid", "dispatched"),
+        defaultValue: "open",
+        allowNull: false,
+      },
+      userInfo: {
+        type: DataTypes.JSON(),
+        allowNull: true,
+      },
     },
     { timestamps: false }
   );
