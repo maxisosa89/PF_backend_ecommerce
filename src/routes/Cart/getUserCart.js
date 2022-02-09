@@ -9,7 +9,7 @@ const getUserCart = async (req, res, next) => {
         user: email,
       },
     });
-
+    console.log("user getted");
     return res.send(cart);
   } catch (err) {
     console.log("Get users/cart/:Userid", err);
