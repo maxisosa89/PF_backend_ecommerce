@@ -18,7 +18,7 @@ const sendMail = async (req, res) => {
     console.log(msg);
     await sgMail
       .setApiKey(
-        "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"
+        "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"
       )
       .send(msg);
     res.status(201).send({ success: true });
