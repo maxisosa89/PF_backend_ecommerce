@@ -25,7 +25,7 @@ const UpdateCardAdmin = async (req, res, next) => {
         } else if(status === "delivered") {
             
             edit.status = "delivered"
-        };
+        }
 
         
         await edit.save();
