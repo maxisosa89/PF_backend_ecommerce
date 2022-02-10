@@ -1,10 +1,10 @@
 const { Users } = require("../../db");
 
-const putUser = async (req, res) => {
+const putUser = async (req, res, next) => {
   
   const { email, name, country, address, cp, state, del, inactiveUser, activeUser, activeAdmin, inactiveAdmin } = req.body;
   
-
+  console.log(name)
   try {
     
     console.log(req.body)
@@ -16,7 +16,7 @@ const putUser = async (req, res) => {
     );
     
 
-    if (del){
+    if(del) {
       toEdit.active = false;
     }
     
@@ -36,19 +36,19 @@ const putUser = async (req, res) => {
       toEdit.admin = false;
     }
     
-    if(name){
+    if(name) {
       toEdit.name = name;
     }
     
-    if(address){
+    if(address) {
       toEdit.address = address;
     }
     
-    if(cp){
+    if(cp) {
       toEdit.cp = cp;
     }
     
-    if(state){
+    if(state) {
       toEdit.state = state;
     } 
     
@@ -61,8 +61,8 @@ const putUser = async (req, res) => {
     res.json(toEdit);
   
   } catch (error) {
-    res.json(error);
-  }
+    next(error);
+}
 
 };
 

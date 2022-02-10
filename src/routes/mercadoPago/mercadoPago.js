@@ -17,7 +17,10 @@ const mercadoPagoPost = async (req, res) => {
       return {
         title: el.name,
         unit_price: Number(el.price),
-        quantity: Number(el.qty),
+        quantity: Object.keys(el.stockSelected).reduce(
+          (acc, talla) => (acc += Number(el.stockSelected[talla])),
+          0
+        ),
       };
     }),
   };
