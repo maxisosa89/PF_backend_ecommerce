@@ -95,7 +95,6 @@ let email = infoUser.email
 
 module.exports = {
   postUserOrder,
-  sendemail
 };
 
 
