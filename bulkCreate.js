@@ -674,19 +674,19 @@ const defaultUsers = [
 
 const defaultPromos = [
   {
-    title: "Gran promoción!",
+    title: "No te pierdas la oportunidad!",
     img: "https://image.freepik.com/foto-gratis/foto-calle-hermosa-chica-anteojos-rojos-capucha-vestido-chaqueta-colorida-verde_8353-7008.jpg",
-    resume: "Por la compra de dos unidades te damos las gracias",
+    resume: "Lo último en prendas de mujer y el precio incluye envío",
   },
   {
-    title: "ültima hora :O!",
+    title: "Última hora :O!",
     img: "https://image.freepik.com/foto-gratis/mujer-hispana-riendo-alegremente-pared-graffiti-flores_181624-46424.jpg",
-    resume: "50% de descuento en una prenda tendencia",
+    resume: "Nuestras camisetas, top 1 en revista moda, al mejor precio",
   },
   {
     title: "Puedes creer que..!",
     img: "https://image.freepik.com/foto-gratis/mujer-hermosa-calle_144627-11073.jpg",
-    resume: "Compra 5 unidades y multiplicas el precio unitario por 5",
+    resume: "Puedes tener vestidos envidiables, ultrafinos y a tu alcance",
   },
 ];
 
