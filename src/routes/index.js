@@ -36,6 +36,8 @@ const { DeleteReviews } = require("./Reviews/deleteReviews");
 
 const { mercadoPagoPost } = require("./mercadoPago/mercadoPago.js");
 
+const { sendMail } = require("./Mails/Mails.js");
+
 /*          Configuracion de rutas:        */
 
 // Reviews:
@@ -83,5 +85,8 @@ router.put("/order", UpdateCardAdmin);
 
 //MERCADOPAGO:
 router.post("/checkout", mercadoPagoPost);
+
+//ENVIO EMAILS
+router.post("/sendMail", sendMail);
 
 module.exports = router;
